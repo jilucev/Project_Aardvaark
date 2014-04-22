@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+
+  root to: 'home#show'
+
+  namespace :admin do
+    resources :users
+  end
+
+  resources :events 
+  resources :users
+  resources :sessions, only: [:new, :create, :destroy]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
