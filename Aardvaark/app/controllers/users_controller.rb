@@ -1,4 +1,4 @@
-class AdminUsersController < ApplicationController
+class UsersController < ApplicationController
 
   def new
   end

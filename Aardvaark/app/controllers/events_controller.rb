@@ -1,6 +1,6 @@
-class AdminUsersController < ApplicationController
+class EventsController < ApplicationController
 
-  def new
+   def new
   end
 
   def create
