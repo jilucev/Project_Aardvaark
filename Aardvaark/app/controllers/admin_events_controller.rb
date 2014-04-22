@@ -1,0 +1,2 @@
+class AdminEventsController < ApplicationController
+end
