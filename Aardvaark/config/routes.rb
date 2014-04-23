@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: 'home#show'
+  root to: 'events#index'
 
   namespace :admin do
     resources :users
