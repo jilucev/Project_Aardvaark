@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # get 'sessions/new'
   # get 'sessions/create'
 
-  root to: 'events#index'
+  root to: 'public#index'
 
   resources :events 
   resources :users
