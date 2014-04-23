@@ -5,11 +5,6 @@ Rails.application.routes.draw do
 
   root to: 'events#index'
 
-  namespace :admin do
-    resources :users
-    resources :events
-  end
-
   resources :events 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
