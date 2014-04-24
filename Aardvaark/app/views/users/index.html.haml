@@ -1,0 +1,31 @@
+%h1 users index
+
+/ signup form
+= form_tag new_user_path, :method => :post do
+
+
+  = text_field_tag :firstname
+  = text_field_tag :lastname
+  = text_field_tag :email
+  = password_field_tag :password
+  = submit_tag "Submit"
+
+/ login form
+= form_tag new_session_path, :method => :post do 
+
+  = text_field_tag :email
+  = password_field_tag :password
+  = submit_tag "Submit"
+
+/ Pic: showing your cuteness and loveability
+
+/ My events
+/   -what you've signed up for 
+/   -deets(where/when/who/how)
+
+/ Upcoming Events
+/   (a board of events you can choose to join. Maybe they are starred if they've been filtered-meaning you are expecially useful for them!)
+
+
+/ Past Events
+/   A record of past involvement and attendance(visible as a reliability rating or no?)
