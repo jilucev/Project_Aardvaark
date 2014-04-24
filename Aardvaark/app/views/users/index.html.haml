@@ -3,7 +3,7 @@
 / signup form
 
 
-= form_for new_user_path, :method => :post do |f|
+= form_for @user do |f|
 
   = f.label "first name"
   = f.text_field :firstname
@@ -25,13 +25,13 @@
   %br
   %br
 
-= form_for new_session_path, :method => :post do |f|
+= form_tag session_path, :method => :post do 
 
-  = f.label "email"
-  = f.text_field :email
+  = label_tag "email"
+  = text_field_tag :email
   %br
-  = f.label "password"
-  = f.password_field :password
+  = label_tag "password"
+  = text_field_tag :password
   %br
   = submit_tag "Submit"
 

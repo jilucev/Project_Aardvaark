@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+  def index
+    
+  end
+
   def new
     @user = User.new
   end
@@ -9,7 +13,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.user.id
-      redirect_to users_path, notice: "Hello, #{@user.firstname}!"
+      redirect_to root_path, notice: "Hello, #{@user.firstname}!"
     else
       render :new
     end
