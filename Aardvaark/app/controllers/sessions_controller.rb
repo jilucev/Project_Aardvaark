@@ -1,23 +1,16 @@
 class SessionsController < ApplicationController
   def new
+    redirect_to '/auth/twitter'    
   end
 
   def create
-    user = User.find_by(email: params[:email])
+    user = User.from_omniauth(env["omniauth.auth"])
+    session[:user_id] = user.id
+    redirect_to root_url, notice: "Signed in!"
+  end
 
-    if user && user.authenticate(params[:password])
-      session[:user_id] =  user.id
-      redirect_to users_path
-    else 
-      render :new
-    end
-
-    if organization && organization.authenticate(params[:password])
-      session[:user_id] =  user.id
-      redirect_to organizations_path
-    else 
-      render :new
-    end
-
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_url, notice: "Signed out!"
   end
 end

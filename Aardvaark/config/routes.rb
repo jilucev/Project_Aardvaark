@@ -8,7 +8,30 @@ Rails.application.routes.draw do
   resources :events 
   resources :users
   resources :organizations
-  resources :sessions, only: [:new, :create, :destroy]
+  # resources :sessions, only: [:new, :create, :destroy]
+
+  # get 'auth/:provider/callback', to: 'sessions#create'
+  # get 'auth/failure', to: redirect('/')
+  # get 'signout', to: 'sessions#destroy', as: 'signout'
+
+  # match 'auth/:provider/callback', to: 'sessions#create'
+  # match 'auth/failure', to: redirect('/')
+  # match 'signout', to: 'sessions#destroy', as: 'signout'
+
+#   get '/auth/:provider/callback' => 'sessions#create'
+#   get '/signin' => 'sessions#new', :as => :signin
+#   get '/signout' => 'sessions#destroy', :as => :signout
+#   get '/auth/failure' => 'sessions#failure'
+
+
+
+
+
+
+
+
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
