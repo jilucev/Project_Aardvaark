@@ -1,20 +1,35 @@
 %h1 users index
 
 / signup form
-= form_tag new_user_path, :method => :post do
 
 
-  = text_field_tag :firstname
-  = text_field_tag :lastname
-  = text_field_tag :email
-  = password_field_tag :password
-  = submit_tag "Submit"
+= form_for new_user_path, :method => :post do |f|
 
-/ login form
-= form_tag new_session_path, :method => :post do 
+  = f.label "first name"
+  = f.text_field :firstname
+  %br
+  = f.label "last name"
+  = f.text_field :lastname
+  %br
+  = f.label "email"
+  = f.text_field :email
+  %br
+  = f.label "password"
+  = f.password_field :password
+  %br
+  = f.submit "Submit"
+  %br
+  %br
+  %br
 
-  = text_field_tag :email
-  = password_field_tag :password
+= form_for new_session_path, :method => :post do |f|
+
+  = f.label "email"
+  = f.text_field :email
+  %br
+  = f.label "password"
+  = f.password_field :password
+  %br
   = submit_tag "Submit"
 
 / Pic: showing your cuteness and loveability
