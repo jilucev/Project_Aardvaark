@@ -36,6 +36,6 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   
   #Devise configuration
-  config.action_mailer.default_url_options = { host: 'aardvark.dev:3000' }
+  config.action_mailer.default_url_options = { host: 'aardvaark.dev:3000' }
 
 end
