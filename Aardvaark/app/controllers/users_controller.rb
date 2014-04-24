@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      session[:user_id] = @user.user_id
+      session[:user_id] = @user.user.id
       redirect_to users_path, notice: "Hello, #{@user.firstname}!"
     else
       render :new
@@ -23,6 +23,12 @@ class UsersController < ApplicationController
 
   def destroy
   end
-end
 
+
+protected
+
+  def user_params
+    params.require(:user).permit(:firstname, :lastname, :email, :phone, :password)
+  end
+end
 
