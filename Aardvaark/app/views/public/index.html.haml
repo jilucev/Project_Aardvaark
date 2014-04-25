@@ -5,3 +5,33 @@
 =image_tag "http://9to5google.files.wordpress.com/2011/09/search_engine_aardvard.jpeg"
 
 %h2 Organization
+
+/ signup form for users
+%h3 User sign in/up
+
+= form_for @users do |f|
+
+  = f.label "first name"
+  = f.text_field :firstname
+  %br
+  = f.label "last name"
+  = f.text_field :lastname
+  %br
+  = f.label "email"
+  = f.text_field :email
+  %br
+  = f.label "password"
+  = f.password_field :password
+  %br
+  = f.submit "Submit"
+  %br
+
+= form_tag session_path do#, :method => :post do 
+
+  = label_tag "email"
+  = text_field_tag "email"
+  %br
+  = label_tag :password
+  = password_field_tag :password
+  %br
+  = submit_tag "Submit"
