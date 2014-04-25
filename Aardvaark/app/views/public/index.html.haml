@@ -6,8 +6,6 @@ ________AdVk!___________
 
 %h2 Organization
 
-
-
 / signup form for users
 %h3 User sign in/up
 
@@ -22,23 +20,18 @@ ________AdVk!___________
   = f.label "email"
   = f.text_field :email
   %br
-  = f.label "phone"
-  = f.text_field :phone
-  %br
   = f.label "password"
   = f.password_field :password
   %br
   = f.submit "Submit"
   %br
-  %br
-  %br
 
-= form_tag session_path, :method => :post do 
+= form_tag session_path do#, :method => :post do 
 
   = label_tag "email"
-  = text_field_tag :email
+  = text_field_tag "email"
   %br
-  = label_tag "password"
-  = text_field_tag :password
+  = label_tag :password
+  = password_field_tag :password
   %br
   = submit_tag "Submit"
