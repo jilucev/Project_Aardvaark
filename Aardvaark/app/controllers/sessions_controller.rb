@@ -5,19 +5,17 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:email])
 
-    if user && user.authenticate(params[:password])
+    if user && user.authenticate(params[:password]) && user.volunteer
       session[:user_id] =  user.id
       redirect_to users_path
-    else 
-      render :new
-    end
-
-    if organization && organization.authenticate(params[:password])
+      console.log("A mutherfrakkin' VO-LUN-TEER!")
+    elsif user && user.authenticate(params[:password])
       session[:user_id] =  user.id
       redirect_to organizations_path
-    else 
+      console.log("A mutherfrakkin' OR-GA-NY-ZAY-HAY-HAY-HAAAAAY-SHUN!")
+    else
       render :new
     end
-
+    
   end
 end
