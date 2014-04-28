@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       redirect_to users_path
     elsif user && user.authenticate(params[:password])
       session[:user_id] =  user.id
-      redirect_to organizations_path
+      redirect_to users_path
     else
       #Fix this
       render :new
@@ -29,9 +29,6 @@ class SessionsController < ApplicationController
     if organization && organization.authenticate(params[:password]) 
       session[:organization_id] =  organization.id
       redirect_to organizations_path
-    elsif organization && organization.authenticate(params[:password])
-      session[:organization_id] =  organization.id
-      redirect_to users_path
     else
       #Fix this
       render :new
