@@ -4,6 +4,9 @@ class OrganizationsController < ApplicationController
     @organizations = Organization.all
     @users = User.all
     @users = @users.with_vehicle(params[:vehicle]) if params[:vehicle].present?
+    @users = @users.are_female(params[:gender]) if params[:gender].present?
+    @users = @users.are_male(params[:gender]) if params[:gender].present?
+    @users =
   end
 
    def new

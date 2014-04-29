@@ -10,4 +10,12 @@ class User < ActiveRecord::Base
   scope :with_vehicle, -> ( vehicle )  do
     where(vehicle: true)
   end
+
+  scope :are_male, -> ( male ) do
+    where(gender: male)
+  end
+
+  scope :are_female, -> (female) do
+    where(gender: female)
+  end
 end
