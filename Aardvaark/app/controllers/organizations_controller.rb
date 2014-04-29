@@ -1,8 +1,9 @@
 class OrganizationsController < ApplicationController
 
   def index
-    @organizations = Organization.new
+    @organizations = Organization.all
     @users = User.all
+    @users = @users.with_vehicle(params[:vehicle]) if params[:vehicle].present?
   end
 
    def new
@@ -22,6 +23,10 @@ class OrganizationsController < ApplicationController
 
 
   def edit
+  end
+
+  def show
+    @users = User.find(params[:id])
   end
 
   def update

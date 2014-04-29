@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140426003723) do
+ActiveRecord::Schema.define(version: 20140429024629) do
 
   create_table "events", force: true do |t|
     t.date     "date"
@@ -49,6 +49,10 @@ ActiveRecord::Schema.define(version: 20140426003723) do
     t.string   "password"
     t.string   "password_digest"
     t.boolean  "organization",    default: false
+    t.string   "gender"
+    t.text     "skills"
+    t.integer  "age"
+    t.boolean  "vehicle"
   end
 
   create_table "vehicles", force: true do |t|

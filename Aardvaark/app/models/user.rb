@@ -7,4 +7,7 @@ class User < ActiveRecord::Base
   validates :lastname, presence: true
   validates :email, presence: true
 
+  scope :with_vehicle, -> ( vehicle )  do
+    where(vehicle: true)
+  end
 end
