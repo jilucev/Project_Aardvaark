@@ -18,4 +18,8 @@ class User < ActiveRecord::Base
   scope :are_female, -> (female) do
     where(gender: female)
   end
+
+  def self.search_by_age(min, max)
+    self.where("age BETWEEN ? AND ?" min, max)
+  end
 end

@@ -6,7 +6,13 @@ class OrganizationsController < ApplicationController
     @users = @users.with_vehicle(params[:vehicle]) if params[:vehicle].present?
     @users = @users.are_female(params[:gender]) if params[:gender].present?
     @users = @users.are_male(params[:gender]) if params[:gender].present?
-    @users =
+    
+    if params[:age]
+      query_params = params[:age].split(",")
+      min = query_params[0].to_i
+      max = query_params[1].to_i
+      @users = @users.search_by_age(min, max)
+    end
   end
 
    def new
