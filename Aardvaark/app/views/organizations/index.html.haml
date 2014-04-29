@@ -29,9 +29,8 @@
   %br
   = submit_tag "Submit"
 
+  
+- if current_user
   %h3= "logout, #{current_user.name}"
-
-  = form_tag session_path do
-
-    = submit_tag "Logout"
+  = button_to "Logout", session_path, method: :delete
 

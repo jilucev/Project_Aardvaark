@@ -1,3 +1,4 @@
+
 class SessionsController < ApplicationController
   def new
   end
@@ -37,7 +38,14 @@ class SessionsController < ApplicationController
 
 
   def destroy
-    session[:user_id] = nil || session[:organization_id] = nil
+    if @current_user 
+      session[:id] = nil
+    else
+      puts "You're already logged out, sis!"
+
+      
+      # session[:user_id] = nil || session[:organization_id] = nil
     redirect_to root_path, notice: "Peace!"
+  end
   end
 end
