@@ -18,57 +18,58 @@
 
 <%= yield %>
 
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-  <script type="text/javascript" src="assets/jquery.ba-cond.min.js"></script>
-  <script type="text/javascript" src="assets/jquery.slitslider.js"></script> 
-<script type="text/javascript"> 
-  $(function() {
-    var Page = (function() {
-    var $nav = $( '#nav-dots > span' ),
-      slitslider = $( '#slider' ).slitslider( {
-        onBeforeChange : function( slide, pos ) {
-          $nav.removeClass( 'nav-dot-current' );
-          $nav.eq( pos ).addClass( 'nav-dot-current' );
-        }
-      }),
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="assets/jquery.glide.min.js"></script>
+  <script>
+    $('.slider.top').glide({
+      arrows: false,
+      navigation: false,
+      keyboard: false,
+      autoplay: false,
+    });
 
-        init = function() {
-          initEvents();    
-        },
-        
-        initEvents = function() {
-          
-          $( "#volunteer" ).on( 'click', function( event ) {
-            var $dot = $( this );
-            slitslider.jump( i + 1 );
-            return false;    
-            });
-                
+    $('.slider.bottom').glide({
+      arrows: false,
+      navigation: false,
+      keyboard: false,
+      autoplay: false,
+    });
+  </script>
 
+  <script>
 
-            };
+  var glideTop = $('.slider.top').glide().data('api_glide');
+  var glideBottom = $('.slider.bottom').glide().data('api_glide');
 
-            return { init : init };
-        })();
+  $( ".volunteer" ).click(function() {
+    glideTop.jump(2, console.log('Top!'));
+  });
 
-        Page.init();
+  $( ".volunteer.back" ).click(function() {
+    glideTop.jump(1, console.log('Top!'));
+  });
 
-        /**
-         * Notes: 
-         * 
-         * example how to add items:
-         */
+  $( ".organization" ).click(function() {
+    glideBottom.jump(2, console.log('Bottom!'));
+  });
 
-        /*
-        
-        var $items  = $('<div class="sl-slide sl-slide-color-2" data-orientation="horizontal" data-slice1-rotation="-5" data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1"><div class="sl-slide-inner bg-1"><div class="sl-deco" data-icon="t"></div><h2>some text</h2><blockquote><p>bla bla</p><cite>Margi Clarke</cite></blockquote></div></div>');
-        
-        // call the plugin's add method
-        ss.add($items);
+  $( ".organization.back" ).click(function() {
+    glideBottom.jump(1, console.log('Bottom!'));
+  });
 
-        */
-      
-      });
-    </script>
+  </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
