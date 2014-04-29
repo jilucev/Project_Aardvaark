@@ -1,6 +1,7 @@
 @import "bootstrap";
 @import "bootstrap/theme";
 @import "font-awesome";
+@import url(http://fonts.googleapis.com/css?family=Share:700,400,700italic,400italic);
 
 /*
 Our color palette
@@ -21,8 +22,21 @@ html {
 
 body {
   height: 100%;
-  background: url("/assets/papar_texture.jpg");
-  font-family: 'Gafata', 'sans-serif';
+  background: url("/assets/papar_texture.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;;
+  /*background: url("/assets/papar_texture.jpg");*/
+  /*font-family: 'Gafata', 'sans-serif';*/
+  font-family: 'Share', sans-serif, 'cursive';
+  font-weight: 400;
+}
+
+ul {
+  margin:0;
+  padding:0;
+  list-style:none;
 }
 
 #container {
@@ -38,18 +52,25 @@ body {
 }
 
 .wrapper {
-  height: 40%;
+  height: 38%;
   width: 100%;
   position: relative;
   overflow: hidden;
 }
 
 .advk-logo {
-  height: 10%;
+  height: 14%;
   width: 100%;
   background: url("/assets/advk_logo2.png") no-repeat center center;
   background-size: contain;
-  opacity: 0.75;
+  opacity: .75;/*
+  background-color: white;
+  border-top: 10px solid white;
+  border-bottom: 10px solid white;
+
+  -webkit-box-shadow: 2px 5px 1px 0px rgba(50, 50, 50, 0.44);
+  -moz-box-shadow:    2px 5px 1px 0px rgba(50, 50, 50, 0.44);
+  box-shadow:         2px 5px 1px 0px rgba(50, 50, 50, 0.44);*/
 }
 
 .landing-choice {
@@ -81,13 +102,6 @@ body {
     background-color: none;
   }
 }
-
-ul {
-  margin:0;
-  padding:0;
-  list-style:none;
-}
-
 
 
 
@@ -201,13 +215,47 @@ ul {
   }
 }
 
-
-
 .flat {
-  font-size: 3em;
-  text-shadow: 0px 1px 1px #4d4d4d;
-  color: #222;
+    top: 30%;
+    position: relative;
+
+    font-size: 7em;
+    font-weight: 700;
+    text-shadow: 0px 2px 2px black;
+    color: #F38630;
+    
+    margin: 0;
+    padding: 0;
+
+    cursor: pointer;
+
+/*    border-radius: 15px;
+    border: 6px solid #F38630;*/
+    span {
+      font-size: .7em;
+    }
+  }
+
+
+@media screen and (max-width: 745px) {
+  .flat {
+    top: 30%;
+    position: relative;
+
+    font-size: 3em;
+    font-weight: 700;
+    text-shadow: 0px 1px 1px black;
+    color: #F38630;
+    
+    margin: 0;
+    padding: 0;
+
+/*    border-radius: 7px;
+    border: 3px solid #F38630;*/
+  }
 }
+
+
 
 
 

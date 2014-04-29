@@ -10,7 +10,9 @@
 
       %li.slide.wrapper
         .col-xs-1.col-md-4.text-center.landing-choice
-        .col-xs-10.col-md-4.text-center.landing-choice  
+          .flat
+            %span.volunteer.back.glyphicon.glyphicon-circle-arrow-left
+        .col-xs-10.col-md-4.text-center.landing-choice
           = form_tag session_path do#, :method => :post do 
             .input-group.margin-bottom-sm
               %span.input-group-addon
@@ -22,7 +24,6 @@
               = password_field_tag :password, nil, class: "form-control", placeholder: "password"
               %span.input-group-btn
                 = submit_tag "GO", class: "btn btn-default"
-          %p.volunteer.back BACK
         .col-xs-1.col-md-4.text-center.landing-choice
 
   .col-xs-12.col-md-12.text-center.advk-logo
@@ -30,10 +31,12 @@
   .slider.bottom
     %ul.slides
       %li.slide.wrapper
-        .col-xs-1.col-md-4.text-center.landing-choice
-        .col-xs-10.col-md-4.text-center.landing-choice
-          .volunteer.flat { VOLUNTEERS }
-        .col-xs-1.col-md-4.text-center.landing-choice
+        .col-xs-1.col-md-2.text-center.landing-choice
+        .col-xs-10.col-md-8.text-center.landing-choice
+          .volunteer.flat 
+            VOLUNTEERS 
+            %span.glyphicon.glyphicon-circle-arrow-right
+        .col-xs-1.col-md-2.text-center.landing-choice
 
       %li.slide.wrapper
         .col-xs-1.col-md-4.text-center.landing-choice
