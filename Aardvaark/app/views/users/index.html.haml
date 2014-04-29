@@ -12,3 +12,56 @@
   %dd A record of past involvement and attendance(visible as a reliability rating or no?)
 
 
+#container
+  .wrapper
+    .col-xs-3.col-md-4.text-center.landing-choice
+    .col-xs-6.col-md-4.text-center.landing-choice
+      #slider
+        .sl-slider
+
+          .sl-slide{:data => {:orientation => "vertical", :slice1_rotation => 25, :slice2_rotation => -25, :slice1_scale => 2, :slice2_scale => 2}}
+            %div.sl-slide{:data => {:orientation => "horizontal", :slice1_rotation => 25, :slice2_rotation => -25, :slice1_scale => 2, :slice2_scale => 2}}
+              .sl-slide-inner
+                = form_for @users, html: { class: "form-inline" } do |f|
+                  .form-group
+                    .sr-only
+                      = f.label "email"
+                    = f.text_field :email, class: "form-control", placeholder: "you@email.com"
+                
+                  .form-group
+                    .sr-only
+                      = f.label "password"
+                    = f.password_field :password, class: "form-control", placeholder: "password"
+                  = f.submit "Submit"
+                  %br
+
+                  = form_tag session_path do#, :method => :post do 
+
+                    = label_tag "email"
+                    = text_field_tag "email"
+                    %br
+                    = label_tag :password
+                    = password_field_tag :password
+                    %br
+                    = submit_tag "Submit"
+          
+          .sl-slide{:data => {:orientation => "vertical", :slice1_rotation => 25, :slice2_rotation => -25, :slice1_scale => 2, :slice2_scale => 2}}
+            %p MOAR CONTENT
+
+    .col-xs-3.col-md-4.text-center.landing-choice
+
+  .col-xs-12.col-md-12.text-center.advk-logo
+
+  .wrapper
+    .col-xs-3.col-md-4.text-center.landing-choice
+    .col-xs-6.col-md-4.text-center.landing-choice
+      %a#volunteers
+        %p ORGANIZATION
+    .col-xs-3.col-md-4.text-center.landing-choice
+
+    
+/ signup form for users
+
+
+
+
