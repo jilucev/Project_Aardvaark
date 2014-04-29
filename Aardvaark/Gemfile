@@ -44,3 +44,9 @@ gem 'bcrypt', '~> 3.1.7'
 
 # gem 'omniauth'
 # gem 'omniauth-twitter'
+
+# Font Awesome Sass
+gem 'font-awesome-sass'
+
+#Font Awesome Rails
+gem "font-awesome-rails"

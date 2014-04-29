@@ -1,5 +1,19 @@
 @import "bootstrap";
 @import "bootstrap/theme";
+@import "font-awesome";
+
+/*
+Our color palette
+69D2E7
+A7DBD8
+E0E4CC
+F38630
+FA6900
+*/
+
+
+
+
 
 html {
   height: 100%;
@@ -14,6 +28,13 @@ body {
 #container {
   height: 100%;
   width: 100%;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  height: 40%;
+  overflow: hidden;
 }
 
 .wrapper {
@@ -34,25 +55,38 @@ body {
 .landing-choice {
   height: 100%;
   p {
+    font-size: 3em;
     position: relative;
     top: 40%;
     background-color: black;
     color: white;
-    font-size: 3em;
-    border-radius: 7px;
+    border-radius: 8px;
     opacity: 0.75;
     margin: 0;
     padding: 0;
-    min-width: 300px;
-    box-shadow: 
-      0 1px 1px rgba(255,255,255,0.4), 
-      inset 0 1px 1px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 2px 5px 1px 0px rgba(50, 50, 50, 0.44);
+    -moz-box-shadow:    2px 5px 1px 0px rgba(50, 50, 50, 0.44);
+    box-shadow:         2px 5px 1px 0px rgba(50, 50, 50, 0.44);
+  }
+  form {
+    position: relative;
+    top: 30%;
+    color: white;
+    border-radius: 8px;
+    opacity: 0.75;
+    margin: 0;
+    padding: 0;
+  }
+  span.input-group-addon {
+    background-color: none;
   }
 }
 
-
-
-
+ul {
+  margin:0;
+  padding:0;
+  list-style:none;
+}
 
 
 
@@ -72,7 +106,7 @@ body {
 .slider {
   position: relative;
   width: 100%;
-  height: 50%;
+  height: 40%;
   overflow: hidden;
 }
 
@@ -82,11 +116,7 @@ body {
   /* Clear fix */
   overflow: hidden;
   *zoom: 1;
-  
-  /**
-   * Prevent blinking issue
-   * Not tested. Experimental.
-   */
+
   -webkit-backface-visibility: hidden;
   -webkit-transform-style: preserve-3d;
 }
@@ -97,42 +127,90 @@ body {
   clear: none;
 }
 
-.slider-arrow {
-  position: absolute;
-  display: block;
-  margin-bottom: -20px;
-  padding: 20px;
+
+
+.stitched {
+  font-size: 3em;
+  position: relative;
+  top: 40%;
+
+  padding: 10px;
+  color: #fff;
 }
 
-.slider-arrow--right {
-  bottom: 50%;
-  right: 30px;
+.stitched.top {
+  border: 2px dashed #E0E4CC;
+ 
+  border-top-left-radius: 7px;
+  -moz-border-radius-topleft: 7px;
+  -webkit-border-top-left-radius: 7px;
+ 
+  border-bottom-right-radius: 7px;
+  -moz-border-radius-bottomright: 7px;
+  -webkit-border-bottom-right-radius: 7px;
+   
+  -moz-box-shadow: 0 0 0 4px #69D2E7, 2px 1px 4px 4px rgba(10,10,0,.5);
+  -webkit-box-shadow: 0 0 0 4px #69D2E7, 2px 1px 4px 4px rgba(10,10,0,.5);
+  box-shadow: 0 0 0 4px #69D2E7, 2px 1px 6px 4px rgba(10,10,0,.5);
+  
+  text-shadow: -1px -1px #aa3030;
+
+  background: #69d2e7; /* Old browsers */
+  background: -moz-linear-gradient(-45deg,  #69d2e7 0%, #a7dbd8 21%, #a7dbd8 79%, #69d2e7 99%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#69d2e7), color-stop(21%,#a7dbd8), color-stop(79%,#a7dbd8), color-stop(99%,#69d2e7)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(-45deg,  #69d2e7 0%,#a7dbd8 21%,#a7dbd8 79%,#69d2e7 99%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(-45deg,  #69d2e7 0%,#a7dbd8 21%,#a7dbd8 79%,#69d2e7 99%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(-45deg,  #69d2e7 0%,#a7dbd8 21%,#a7dbd8 79%,#69d2e7 99%); /* IE10+ */
+  background: linear-gradient(135deg,  #69d2e7 0%,#a7dbd8 21%,#a7dbd8 79%,#69d2e7 99%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#69d2e7', endColorstr='#69d2e7',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
 }
 
-.slider-arrow--left {
-  bottom: 50%;
-  left: 30px;
+.stitched.bottom {
+  border: 2px dashed #E0E4CC;
+ 
+  border-top-left-radius: 7px;
+  -moz-border-radius-topleft: 7px;
+  -webkit-border-top-left-radius: 7px;
+ 
+  border-bottom-right-radius: 7px;
+  -moz-border-radius-bottomright: 7px;
+  -webkit-border-bottom-right-radius: 7px;
+   
+  -moz-box-shadow: 0 0 0 4px #FA6900, 2px 1px 4px 4px rgba(10,10,0,.5);
+  -webkit-box-shadow: 0 0 0 4px #FA6900, 2px 1px 4px 4px rgba(10,10,0,.5);
+  box-shadow: 0 0 0 4px #FA6900, 2px 1px 6px 4px rgba(10,10,0,.5);
+  
+  text-shadow: -1px -1px #aa3030;
+
+  background: #fa6900; /* Old browsers */
+  background: -moz-linear-gradient(-45deg,  #fa6900 0%, #f38630 21%, #f38630 79%, #fa6900 99%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#fa6900), color-stop(21%,#f38630), color-stop(79%,#f38630), color-stop(99%,#fa6900)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(-45deg,  #fa6900 0%,#f38630 21%,#f38630 79%,#fa6900 99%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(-45deg,  #fa6900 0%,#f38630 21%,#f38630 79%,#fa6900 99%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(-45deg,  #fa6900 0%,#f38630 21%,#f38630 79%,#fa6900 99%); /* IE10+ */
+  background: linear-gradient(135deg,  #fa6900 0%,#f38630 21%,#f38630 79%,#fa6900 99%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fa6900', endColorstr='#fa6900',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
 }
 
-.slider-nav {
-  position: absolute;
-  bottom: 30px;
+@media screen and (max-width: 600px) {
+  .stitched {
+    padding: 5px;
+    font-size: 1.5em;
+  }
 }
 
-.slider-nav__item {
-  width: 12px;
-  height: 12px;
-  float: left;
-  clear: none;
-  display: block;
-  margin: 0 5px;
-  background: #fff;
+
+
+.flat {
+  font-size: 3em;
+  text-shadow: 0px 1px 1px #4d4d4d;
+  color: #222;
 }
 
-.slider-nav__item:hover {
-  background: #ccc;
-}
 
-.slider-nav__item--current {
-  background: #ccc;
-}
+
+
+
+

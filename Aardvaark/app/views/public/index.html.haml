@@ -1,39 +1,53 @@
 #container
   .slider.top
+
     %ul.slides
+      %li.slide.wrapper
+        .col-xs-1.col-md-4.text-center.landing-choice
+        .col-xs-10.col-md-4.text-center.landing-choice
+          .organization.stitched.top ORGANIZATIONS
+        .col-xs-1.col-md-4.text-center.landing-choice
 
       %li.slide.wrapper
-        .col-xs-3.col-md-4.text-center.landing-choice
-        .col-xs-6.col-md-4.text-center.landing-choice  
-          %p.organization HEY!
-        .col-xs-3.col-md-4.text-center.landing-choice
-
-      %li.slide.wrapper
-        .col-xs-3.col-md-4.text-center.landing-choice
-        .col-xs-6.col-md-4.text-center.landing-choice  
-          %p.volunteer.back YOU!
-        .col-xs-3.col-md-4.text-center.landing-choice
+        .col-xs-1.col-md-4.text-center.landing-choice
+        .col-xs-10.col-md-4.text-center.landing-choice  
+          = form_tag session_path do#, :method => :post do 
+            .input-group.margin-bottom-sm
+              %span.input-group-addon
+                %i.fa.fa-envelope-o.fa-fw
+              = text_field_tag "email", nil, class: "form-control", placeholder: "email"
+            .input-group
+              %span.input-group-addon
+                %i.fa.fa-key.fa-fw
+              = password_field_tag :password, nil, class: "form-control", placeholder: "password"
+              %span.input-group-btn
+                = submit_tag "GO", class: "btn btn-default"
+          %p.volunteer.back BACK
+        .col-xs-1.col-md-4.text-center.landing-choice
 
   .col-xs-12.col-md-12.text-center.advk-logo
 
   .slider.bottom
     %ul.slides
-  
       %li.slide.wrapper
-        .col-xs-3.col-md-4.text-center.landing-choice
-        .col-xs-6.col-md-4.text-center.landing-choice
-          %p.volunteer TICKLE!
-        .col-xs-3.col-md-4.text-center.landing-choice
+        .col-xs-1.col-md-4.text-center.landing-choice
+        .col-xs-10.col-md-4.text-center.landing-choice
+          .volunteer.flat { VOLUNTEERS }
+        .col-xs-1.col-md-4.text-center.landing-choice
 
       %li.slide.wrapper
-        .col-xs-3.col-md-4.text-center.landing-choice
-        .col-xs-6.col-md-4.text-center.landing-choice
-          %p.organization.back BRAP!
-        .col-xs-3.col-md-4.text-center.landing-choice
-
-
-
-
-
-
-
+        .col-xs-1.col-md-4.text-center.landing-choice
+        .col-xs-10.col-md-4.text-center.landing-choice
+          = form_tag session_path do#, :method => :post do 
+            .input-group.margin-bottom-sm
+              %span.input-group-addon
+                %i.fa.fa-envelope-o.fa-fw
+              = text_field_tag "email", nil, class: "form-control", placeholder: "email"
+            .input-group
+              %span.input-group-addon
+                %i.fa.fa-key.fa-fw
+              = password_field_tag :password, nil, class: "form-control", placeholder: "password"
+              %span.input-group-btn
+                = submit_tag "GO", class: "btn btn-default"
+          %p.organization.back BACK
+        .col-xs-1.col-md-4.text-center.landing-choice
