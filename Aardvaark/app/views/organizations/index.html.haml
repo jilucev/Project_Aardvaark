@@ -1,7 +1,30 @@
+- if current_user
+  %p= "Hello "+current_user.firstname+" "+current_user.lastname+" "+current_user.email
+  = link_to 'Log out', session_path, :method => :delete
 
-/ signup form for users
 %h3 Organization user listings
-
 
 - @users.each do |user|
   %p= user.firstname+" "+user.lastname+" // "+user.email
+
+%h3 Organization Sign Up
+
+%h1 Sign Up
+= form_for @organization do |f|
+  = f.text_field :email, placeholder: "you@email.com"
+  %br
+  = f.password_field :password, placeholder: "password"
+  %br
+  = f.text_field :name, placeholder: "org name"
+  %br
+  = f.submit "Submit"
+
+%br
+
+%h1 Sign In
+= form_tag session_path do
+  = text_field_tag :email, nil, placeholder: "you@email.com"
+  %br
+  = password_field_tag :password, nil, placeholder: "password"
+  %br
+  = submit_tag "Submit"

@@ -1,7 +1,7 @@
 class OrganizationsController < ApplicationController
 
   def index
-    @organizations = Organization.new
+    @organization = Organization.new
     @users = User.all
   end
 
@@ -14,9 +14,10 @@ class OrganizationsController < ApplicationController
 
       if @organization.save
         session[:organization_id] = @organization.id
-        redirect_to root_path, notice: "Hello, #{@organization.name}!"
+        redirect_to organizations_path, notice: "Hello, #{@organization.name}!"
       else
-        render :new
+        # render :root
+        redirect_to root_path, notice: "Hello, #{@organization.name}!"
       end
   end
 
@@ -33,6 +34,6 @@ class OrganizationsController < ApplicationController
   protected
 
   def organization_params
-    params.require(:organization).permit(:name, :email, :representative_name, :password)
+    params.require(:organization).permit(:email, :password, :name)
   end
 end
