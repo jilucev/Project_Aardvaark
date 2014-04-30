@@ -7,13 +7,14 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:password]) && !user.organization
       session[:user_id] =  user.id
-      redirect_to users_path
-    elsif user && user.authenticate(params[:password])
-      session[:user_id] =  user.id
-      redirect_to organizations_path
+      redirect_to users_path, notice: "Welcome back, #{user.firstname}!"
+    # elsif user && user.authenticate(params[:password])
+    #   session[:user_id] =  user.id
+    #   redirect_to organizations_path
     else
-      #Fix this
-      render :new
+      flash.now[:alert] = "Log in failed..."
+      # render :new
+      redirect_to users_path, notice: "LOG IN FAILED"
     end
   end
 

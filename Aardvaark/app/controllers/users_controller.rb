@@ -15,9 +15,10 @@ class UsersController < ApplicationController
     if @user.save
       puts "?!?!?!SDSDSADASDASDSSADAS"
       session[:user_id] = @user.id
-      redirect_to root_path, notice: "Hello, #{@user.firstname}!"
+      redirect_to users_path, notice: "Hello, #{@user.firstname}!"
     else
-      render :root
+      # render :root
+      redirect_to root_path, notice: "Hello, #{@user.firstname}!"
     end
   end
 
