@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:email])
 
-    if user && user.authenticate(params[:password]) && !user.organization
+    if user && user.authenticate(params[:password])# && !user.organization
       session[:user_id] =  user.id
       redirect_to users_path, notice: "Welcome back, #{user.firstname}!"
     # elsif user && user.authenticate(params[:password])
@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     else
       flash.now[:alert] = "Log in failed..."
       # render :new
-      redirect_to users_path, notice: "LOG IN FAILED"
+      redirect_to users_path
     end
   end
 
