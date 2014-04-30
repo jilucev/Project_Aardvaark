@@ -22,4 +22,12 @@ class User < ActiveRecord::Base
   def self.search_by_age(min, max)
     self.where("age BETWEEN ? AND ?", min, max)
   end
+
+  def relevant_events
+    events = []
+    organizations.each do |organization|
+    events += organization.events
+    end
+    events.flatten
+  end
 end

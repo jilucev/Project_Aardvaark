@@ -23,39 +23,18 @@
 
 %h2 Create an event
     
-= form_for @events do |f|
+= form_for Event.new do |f|
 
   = f.label "date"
   = f.date_field :date
   %br
-  = f.label "last name"
-  = f.text_field :lastname
+  = f.label "event time"
+  = f.time_field :event_time
   %br
-  = f.label "email"
-  = f.text_field :email
+  = f.label "location"
+  = f.text_field :location
   %br
-  = f.label "phone number"
-  = f.text_field :phone
-  %br
-  = f.label "gender"
-  = select_tag "gender", "<option>female</option><option>male</option><option>-</option>".html_safe
-  %br
-  = f.label "age"
-  = number_field :age
-  %br
-  = f.label "Do you have a vehicle?"
-  = select_tag "vehicle", "<option>yes</option><option>no</option>".html_safe
-  %br
-  = f.label "how many passengers can your vehicle take?"
-  = f.number_field :passenger_capacity
-  %br
-  = f.label "password"
-  = f.password_field :password
+  = f.label "description"
+  = f.text_field :description
   %br
   = f.submit "Submit"
-  %br
-
-
-   t.date     "date"
-    t.string   "description"
-    t.string   "type"

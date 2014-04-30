@@ -3,6 +3,7 @@ class OrganizationsController < ApplicationController
   def index
     @organizations = Organization.all
     @users = User.all
+   
     
     if params[:age]
       query_params = params[:age].split("-")

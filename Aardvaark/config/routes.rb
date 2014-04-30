@@ -7,7 +7,8 @@ Rails.application.routes.draw do
 
   resources :events 
   resources :users
-
+  resources :organizations
+  
   namespace :organizations do
     resources :events
     resources :users, except: [:create]
