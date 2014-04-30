@@ -15,6 +15,10 @@ class SessionsController < ApplicationController
       #Fix this
       render :new
     end
-    
+  end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_path, notice: "And don't let the door kick your ass on the way out."
   end
 end

@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.new
+    @users = User.all
+    @user = User.new
   end
 
   def new
@@ -12,10 +13,11 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      puts "?!?!?!SDSDSADASDASDSSADAS"
       session[:user_id] = @user.id
       redirect_to root_path, notice: "Hello, #{@user.firstname}!"
     else
-      render :new
+      render :root
     end
   end
 
