@@ -25,9 +25,10 @@ class User < ActiveRecord::Base
 
   def relevant_events
     events = []
-    organizations.each do |organization|
-    events += organization.events
-    end
-    events.flatten
+    @organizations = Organization.all
+  #   @organizations.each do |organization|
+  #   events += organization.events
+  #   end
+  #   events.flatten
   end
 end

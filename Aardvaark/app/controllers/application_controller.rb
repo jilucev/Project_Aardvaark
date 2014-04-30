@@ -12,8 +12,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
-def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id] || (Organization.find(session[:organization_id]) if session[:organization_id])
+  def current_user
+    if session[:user_id]
+      @current_user = User.find(session[:user_id])
+    elsif session[:organization_id]
+      @current_user = Organization.find(session[:organization_id])
+    end
   end
   # def current_user
   #   (@current_user ||= User.find(session[:user_id]) if session[:user_id]) ||

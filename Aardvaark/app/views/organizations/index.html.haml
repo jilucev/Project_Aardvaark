@@ -38,3 +38,7 @@
   = f.text_field :description
   %br
   = f.submit "Submit"
+  %br
+
+  - @events.each do |event|
+    %p= event.location+" / "+event.date.to_s+" / "+event.organization_id.to_s

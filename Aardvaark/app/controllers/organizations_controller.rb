@@ -3,6 +3,7 @@ class OrganizationsController < ApplicationController
   def index
     @organizations = Organization.all
     @users = User.all
+    @events = Event.all
    
     
     if params[:age]
