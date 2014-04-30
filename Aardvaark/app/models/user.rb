@@ -20,6 +20,6 @@ class User < ActiveRecord::Base
   end
 
   def self.search_by_age(min, max)
-    self.where("age BETWEEN ? AND ?" min, max)
+    self.where("age BETWEEN ? AND ?", min, max)
   end
 end
