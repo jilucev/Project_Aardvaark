@@ -29,6 +29,10 @@ class UsersController < ApplicationController
   def update
   end
 
+  def profile
+    
+  end
+
   def destroy
   end
 

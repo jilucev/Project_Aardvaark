@@ -4,7 +4,6 @@ class OrganizationsController < ApplicationController
     @organizations = Organization.all
     @users = User.all
     
-    
     if params[:age]
       query_params = params[:age].split("-")
       min = query_params[0].strip.to_i

@@ -1,22 +1,61 @@
 %h1 organizations index
 
-- @users.each do |user|
-  - volunteer = user.firstname
-  %p #{volunteer}
+/ %h2 list of volunteers
+
+/ - @users.each do |user|
+/   - volunteer = user.firstname
+/   %p #{volunteer}
 
 
-%h2 filter volunteers
+/ %h2 filter volunteers
 
-= form_tag organizations_search_path do 
+/ = form_tag organizations_search_path do 
   
-  = label_tag "search by vehicle"
-  = text_field_tag :vehicle
-  %br
-  = label_tag "search by gender"
-  = text_field_tag :gender
-  %br
-  = label_tag "search by age"
-  = select_tag "age", "<option>18 -25</option><option>26 - 45</option><option>46 + </option>".html_safe
-  = submit_tag("search")
+/   = label_tag "search by vehicle"
+/   = text_field_tag :vehicle
+/   %br
+/   = label_tag "search by gender"
+/   = text_field_tag :gender
+/   %br
+/   = label_tag "search by age"
+/   = select_tag "age", "<option>18 -25</option><option>26 - 45</option><option>46 + </option>".html_safe
+/   = submit_tag("search")
 
+%h2 Create an event
     
+= form_for @events do |f|
+
+  = f.label "date"
+  = f.date_field :date
+  %br
+  = f.label "last name"
+  = f.text_field :lastname
+  %br
+  = f.label "email"
+  = f.text_field :email
+  %br
+  = f.label "phone number"
+  = f.text_field :phone
+  %br
+  = f.label "gender"
+  = select_tag "gender", "<option>female</option><option>male</option><option>-</option>".html_safe
+  %br
+  = f.label "age"
+  = number_field :age
+  %br
+  = f.label "Do you have a vehicle?"
+  = select_tag "vehicle", "<option>yes</option><option>no</option>".html_safe
+  %br
+  = f.label "how many passengers can your vehicle take?"
+  = f.number_field :passenger_capacity
+  %br
+  = f.label "password"
+  = f.password_field :password
+  %br
+  = f.submit "Submit"
+  %br
+
+
+   t.date     "date"
+    t.string   "description"
+    t.string   "type"
