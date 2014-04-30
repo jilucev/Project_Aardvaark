@@ -2,6 +2,7 @@ class OrganizationsController < ApplicationController
 
   def index
     @organizations = Organization.all
+    @organization = Organization.new
     @users = User.all
     @events = Event.all
    
@@ -16,7 +17,7 @@ class OrganizationsController < ApplicationController
 
    def new
     @organization = Organization.new
-  end
+    end
 
   def create
     @organization = Organization.new(organization_params)
