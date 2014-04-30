@@ -2,7 +2,7 @@
 - if current_user
   %p= "Hello "+current_user.firstname+" "+current_user.lastname+" "+current_user.email
   = link_to 'Log out', session_path, :method => :delete
-
+  = link_to "Delete yo' self?", user_path(current_user), method: :delete, confirm: "You sure?"
 
 %h1 users index
 
