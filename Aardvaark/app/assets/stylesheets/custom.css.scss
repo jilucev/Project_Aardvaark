@@ -41,16 +41,18 @@ ul {
   overflow: hidden;
 }
 
-.slider.advk-logo {
+.paper {
   background: url("/assets/papar_texture.jpg") repeat;
-}
-.advk-logo {
   height: 12%;
   width: 100%;
   border: 3px 0;  
-  
   border-top: 2px dashed white;
   border-bottom: 2px dashed white;
+    img {
+      margin: 3px;
+      opacity: .80;
+      height: 10%;
+    }
 }
 
 .landing-choice {
