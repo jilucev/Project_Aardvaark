@@ -45,3 +45,9 @@ gem 'pry'
 
 # gem 'omniauth'
 # gem 'omniauth-twitter'
+
+# Font Awesome Sass
+gem 'font-awesome-sass'
+
+#Font Awesome Rails
+gem "font-awesome-rails"

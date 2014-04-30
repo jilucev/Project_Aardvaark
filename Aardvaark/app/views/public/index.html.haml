@@ -1,52 +1,60 @@
 #container
-  .wrapper
-    .col-xs-3.col-md-4.text-center.landing-choice
-    .col-xs-6.col-md-4.text-center.landing-choice
-      #slider
-        .sl-slider
+  .slider.top
+    %ul.slides
+      %li.slide.wrapper
+        .col-xs-1.col-md-2.text-center.landing-choice
+        .col-xs-10.col-md-8.text-center.landing-choice
+          .organization.flat.top
+            %span.glyphicon.glyphicon-circle-arrow-left
+            ORGANIZATIONS
+        .col-xs-1.col-md-2.text-center.landing-choice
 
-          .sl-slide{:data => {:orientation => "vertical", :slice1_rotation => 25, :slice2_rotation => -25, :slice1_scale => 2, :slice2_scale => 2}}
-            %div.sl-slide{:data => {:orientation => "horizontal", :slice1_rotation => 25, :slice2_rotation => -25, :slice1_scale => 2, :slice2_scale => 2}}
-              .sl-slide-inner
-                = form_for @users, html: { class: "form-inline" } do |f|
-                  .form-group
-                    .sr-only
-                      = f.label "email"
-                    = f.text_field :email, class: "form-control", placeholder: "you@email.com"
-                
-                  .form-group
-                    .sr-only
-                      = f.label "password"
-                    = f.password_field :password, class: "form-control", placeholder: "password"
-                  = f.submit "Submit"
-                  %br
+      %li.slide.wrapper
+        .col-xs-1.col-md-3.text-center.landing-choice
+          .flat
+            .volunteer.back.glyphicon.glyphicon-circle-arrow-right
+        .col-xs-10.col-md-6.text-center.landing-choice
+          = form_tag session_path do#, :method => :post do 
+            .input-group.margin-bottom-sm
+              %span.input-group-addon
+                %i.fa.fa-envelope-o.fa-fw
+              = text_field_tag "email", nil, class: "form-control", placeholder: "email"
+            .input-group
+              %span.input-group-addon
+                %i.fa.fa-key.fa-fw
+              = password_field_tag :password, nil, class: "form-control", placeholder: "password"
+              %span.input-group-btn
+                = submit_tag "GO", class: "btn btn-default"
+        .col-xs-1.col-md-3.text-center.landing-choice
 
-                  = form_tag session_path do#, :method => :post do 
+  .slider
+    .col-xs-12.col-md-12.text-center.paper
+      =image_tag "advk_logo2.png"
 
-                    = label_tag "email"
-                    = text_field_tag "email"
-                    %br
-                    = label_tag :password
-                    = password_field_tag :password
-                  
-                    %br
-                    = submit_tag "Submit"
-          
-          .sl-slide{:data => {:orientation => "vertical", :slice1_rotation => 25, :slice2_rotation => -25, :slice1_scale => 2, :slice2_scale => 2}}
-            %p MOAR CONTENT
+  .slider.bottom
+    %ul.slides
+      %li.slide.wrapper
+        .col-xs-1.col-md-2.text-center.landing-choice
+        .col-xs-10.col-md-8.text-center.landing-choice
+          .volunteer.flat.bottom
+            VOLUNTEERS
+            %span.glyphicon.glyphicon-circle-arrow-right
+        .col-xs-1.col-md-2.text-center.landing-choice
 
-    .col-xs-3.col-md-4.text-center.landing-choice
-
-  .col-xs-12.col-md-12.text-center.advk-logo
-
-  .wrapper
-    .col-xs-3.col-md-4.text-center.landing-choice
-    .col-xs-6.col-md-4.text-center.landing-choice
-      %a#volunteers
-        %p ORGANIZATION
-    .col-xs-3.col-md-4.text-center.landing-choice
-
-    
-/ signup form for users
-
-
+      %li.slide.wrapper
+        .col-xs-1.col-md-3.text-center.landing-choice
+        .col-xs-10.col-md-6.text-center.landing-choice
+          = form_tag session_path do#, :method => :post do 
+            .input-group.margin-bottom-sm
+              %span.input-group-addon
+                %i.fa.fa-envelope-o.fa-fw
+              = text_field_tag "email", nil, class: "form-control", placeholder: "email"
+            .input-group
+              %span.input-group-addon
+                %i.fa.fa-key.fa-fw
+              = password_field_tag :password, nil, class: "form-control", placeholder: "password"
+              %span.input-group-btn
+                = submit_tag "GO", class: "btn btn-default"
+        .col-xs-1.col-md-3.text-center.landing-choice
+          .flat
+            .organization.back.glyphicon.glyphicon-circle-arrow-left

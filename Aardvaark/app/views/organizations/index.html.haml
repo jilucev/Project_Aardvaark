@@ -30,9 +30,9 @@
   = submit_tag "Submit"
 
   
-- if current_user
-  %h3= "logout, #{current_user.firstname}"
-  = button_to "Logout", session_path, method: :delete
+/ - if current_user
+/   %h3= "logout, #{current_user.firstname}"
+/   = button_to "Logout", session_path, method: :delete
 
 / %h2 list of volunteers
 
