@@ -12,6 +12,8 @@
     = user.email+" // "
     = user.phone+" // "
     = user.password
+    = link_to "View?", user_path(user)
+= link_to "Create another User from another page?", new_user_path
 
 %h2 things this page should show
 %dl
@@ -37,7 +39,7 @@
   %br
   = f.text_field :phone, placeholder: "phone number"
   %br
-  = f.submit "Submit"
+  = f.submit "Register"
 
 
 %br

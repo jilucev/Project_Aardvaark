@@ -1,0 +1,14 @@
+%h1 Edit your stuffs
+
+= form_for @user do |f|
+  = f.text_field :email, placeholder: "you@email.com"
+  %br
+  = f.password_field :password, placeholder: "password"
+  %br
+  = f.text_field :firstname, placeholder: "first name"
+  %br
+  = f.text_field :lastname, placeholder: "last name"
+  %br
+  = f.text_field :phone, placeholder: "phone number"
+  %br
+  = f.submit "Update"

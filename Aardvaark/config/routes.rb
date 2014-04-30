@@ -3,10 +3,12 @@ Rails.application.routes.draw do
   # get 'sessions/new'
   # get 'sessions/create'
 
-  get 'users',     to: 'users#index'
-  get 'users/:id', to: 'users#show'
-  get 'users/new', to: 'users#new'
-  post 'users',    to: 'users#create'
+  # get 'users',          to: 'users#index'
+  # get 'users/:id',      to: 'users#show', as: 'user'
+  # get 'users/new',      to: 'users#new'
+  # get 'users/:id/edit', to: 'users#edit'
+  # patch 'users/:id',    to: 'users#update'
+  # post 'users',         to: 'users#create'
 
   root to: 'public#index'
 
@@ -15,7 +17,9 @@ Rails.application.routes.draw do
   resources :organizations
   resource :session, only: [:new, :create, :destroy]
 
-
+  
+  
+  
 
 
 

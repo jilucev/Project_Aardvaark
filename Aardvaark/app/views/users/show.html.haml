@@ -1,3 +1,7 @@
 %h1 The User's Page! Willkommen!
 
-= @user.firstname+" "@user.lastname
+= @user.firstname+" "+@user.lastname
+%br
+= link_to "Lets edit this sum'b'itch!", edit_user_path
+%br
+= link_to "Back to the index page?", users_path
