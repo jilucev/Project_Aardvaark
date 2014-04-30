@@ -13,7 +13,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      puts "?!?!?!SDSDSADASDASDSSADAS"
       session[:user_id] = @user.id
       redirect_to users_path, notice: "Hello, #{@user.firstname}!"
     else
@@ -31,11 +30,10 @@ class UsersController < ApplicationController
   def destroy
   end
 
-
 protected
 
   def user_params
-    params.require(:user).permit(:firstname, :lastname, :email, :password)
+    params.require(:user).permit(:firstname, :lastname, :email, :password, :phone)
   end
 end
 
