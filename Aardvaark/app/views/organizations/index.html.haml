@@ -5,21 +5,18 @@
   %p #{volunteer}
 
 
-age range
-gender
-vehicle
-
 %h2 filter volunteers
-= form_tag user_path, method :get do
+
+= form_tag organizations_search_path do 
   
-  label_tag "search by vehicle"
-  text_field_tag :vehicle, nil
+  = label_tag "search by vehicle"
+  = text_field_tag :vehicle
   %br
-  label_tag "search by gender"
-  text_field_tag :gender, nil
+  = label_tag "search by gender"
+  = text_field_tag :gender
   %br
-  label_tag "search by age"
-  select_tag
+  = label_tag "search by age"
+  = select_tag "age", "<option>18 -25</option><option>26 - 45</option><option>46 + </option>".html_safe
+  = submit_tag("search")
 
-/ = @users.first.firstname
-
+    
