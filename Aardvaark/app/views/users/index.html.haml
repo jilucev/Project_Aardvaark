@@ -4,8 +4,16 @@
   = link_to 'Log out', session_path, :method => :delete
   = link_to "Delete yo' self?", user_path(current_user), method: :delete, confirm: "You sure?"
 
-%h1 users index
+%h1 users index -- list of users
 
+- @users.each do |user|
+  %p
+    = user.firstname+" "+user.lastname+" // "
+    = user.email+" // "
+    = user.phone+" // "
+    = user.password
+
+%h2 things this page should show
 %dl
   %dt Pic
   %dd showing your cuteness and loveability

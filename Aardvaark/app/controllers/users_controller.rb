@@ -1,9 +1,18 @@
 class UsersController < ApplicationController
+
+#   before_validation(on: :create) do
+#     self.phone = phone.gsub(/[^0-9]/, "") if attribute_present?("number")
+#   end
+# end
   
   def index
     @users = User.all
     @user = User.new
   end
+
+  def show
+    @user = User.find(params[:id])
+  end 
 
   def new
     @user = User.new
@@ -30,7 +39,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to root_path, :method => :delete
+    redirect_to session_path, :method => :delete
   end
 
 protected
