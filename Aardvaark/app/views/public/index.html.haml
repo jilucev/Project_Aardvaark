@@ -1,6 +1,6 @@
 #container
-  .slider.top
 
+  .slider.top
     %ul.slides
       %li.slide.wrapper
         .col-xs-1.col-md-2.text-center.landing-choice
@@ -16,7 +16,7 @@
             .volunteer.back.glyphicon.glyphicon-circle-arrow-right
         .col-xs-10.col-md-6.text-center.landing-choice
           = form_tag session_path do#, :method => :post do 
-            .input-group.margin-bottom-md
+            .input-group.margin-bottom-sm
               %span.input-group-addon
                 %i.fa.fa-envelope-o.fa-fw
               = text_field_tag "email", nil, class: "form-control", placeholder: "email"
@@ -28,7 +28,8 @@
                 = submit_tag "GO", class: "btn btn-default"
         .col-xs-1.col-md-3.text-center.landing-choice
 
-  .col-xs-12.col-md-12.text-center.advk-logo
+  .slider.advk-logo
+    .col-xs-12.col-md-12.text-center
 
   .slider.bottom
     %ul.slides

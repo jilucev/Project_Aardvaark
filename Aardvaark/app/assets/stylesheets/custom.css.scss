@@ -18,7 +18,7 @@ html {
 
 body {
   height: 100%;
-  background: url("/assets/papar_texture.jpg");
+  /*background: url("/assets/papar_texture.jpg");*/
   font-family: 'Share', sans-serif, 'cursive';
   font-weight: 400;
 }
@@ -35,45 +35,26 @@ ul {
 }
 
 .wrapper {
-  height: 38%;
+  height: 100%;
   width: 100%;
   position: relative;
   overflow: hidden;
 }
 
+.slider.advk-logo {
+  background: url("/assets/papar_texture.jpg") repeat;
+}
 .advk-logo {
   height: 12%;
   width: 100%;
-  background: url("/assets/advk_logo2.png") no-repeat center center;
-  background-size: contain;
-  opacity: .75;
-  /*
-  background-color: white;
-  border-top: 10px solid white;
-  border-bottom: 10px solid white;
-
-  -webkit-box-shadow: 2px 5px 1px 0px rgba(50, 50, 50, 0.44);
-  -moz-box-shadow:    2px 5px 1px 0px rgba(50, 50, 50, 0.44);
-  box-shadow:         2px 5px 1px 0px rgba(50, 50, 50, 0.44);
-  */
+  border: 3px 0;  
+  
+  border-top: 2px dashed white;
+  border-bottom: 2px dashed white;
 }
 
 .landing-choice {
   height: 100%;
-  p {
-    font-size: 3em;
-    position: relative;
-    top: 40%;
-    background-color: black;
-    color: white;
-    border-radius: 8px;
-    opacity: 0.75;
-    margin: 0;
-    padding: 0;
-    -webkit-box-shadow: 2px 5px 1px 0px rgba(50, 50, 50, 0.44);
-    -moz-box-shadow:    2px 5px 1px 0px rgba(50, 50, 50, 0.44);
-    box-shadow:         2px 5px 1px 0px rgba(50, 50, 50, 0.44);
-  }
   form {
     position: relative;
     top: 30%;
@@ -96,29 +77,28 @@ ul {
 
 
 
-
-
 .slider {
   position: relative;
   width: 100%;
-  height: 40%;
   overflow: hidden;
 }
 
 .slider.top {
-  background: url("/assets/bgSplash2.jpg") no-repeat center center fixed; 
+  height: 44%;
+  background: url("/assets/bgSplash2.jpg") no-repeat center center; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;;
+  background-size: cover;
 }
 
 .slider.bottom {
-  background: url("/assets/bgSplash.JPG") no-repeat center center fixed; 
+  height: 44%;
+  background: url("/assets/bgSplash.JPG") no-repeat center center; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;;
+  background-size: cover;
 }
 
 .slides {
@@ -138,7 +118,7 @@ ul {
   clear: none;
 }
 
-.margin-bottom-md {
+.margin-bottom-sm {
   margin-bottom: 5px;
 }
 
@@ -286,14 +266,3 @@ ul {
     font-size: 1.5em;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
