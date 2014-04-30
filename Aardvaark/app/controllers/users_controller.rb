@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  
   def index
     @users = User.all
     @user = User.new
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to root_path
+    redirect_to root_path, :method => :delete
   end
 
 protected

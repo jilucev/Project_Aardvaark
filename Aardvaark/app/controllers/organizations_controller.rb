@@ -2,6 +2,7 @@ class OrganizationsController < ApplicationController
 
   def index
     @organization = Organization.new
+    @organizations = Organization.all
     @users = User.all
   end
 
