@@ -19,10 +19,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find_by(params[:id])
+  end
+
   def edit
   end
 
   def update
+  end
+
+  def profile
+    
   end
 
   def destroy
@@ -32,7 +40,7 @@ class UsersController < ApplicationController
 protected
 
   def user_params
-    params.require(:user).permit(:firstname, :lastname, :email, :password)
+    params.require(:user).permit(:firstname, :lastname, :email, :phone, :password, :gender, :age, :vehicle, :passenger_capacity )
   end
 end
 
