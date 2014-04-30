@@ -21,7 +21,7 @@
   = select_tag "gender", "<option>female</option><option>male</option><option>-</option>".html_safe
   %br
   = f.label "age"
-  = number_field :age
+  = f.number_field :age
   %br
   = f.label "Do you have a vehicle?"
   = select_tag "vehicle", "<option>yes</option><option>no</option>".html_safe

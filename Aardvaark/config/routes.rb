@@ -4,11 +4,13 @@ Rails.application.routes.draw do
   # get 'sessions/create'
 
   root to: 'public#index'
+  
+  get '/users/profile', to: 'users#profile'
 
   resources :events 
   resources :users
   resources :organizations
-  
+
   namespace :organizations do
     resources :events
     resources :users, except: [:create]
@@ -17,7 +19,7 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
 
   post '/organizations/search', to: 'organizations#search'
-  get '/users/profile', to: 'users#profile'
+ 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
