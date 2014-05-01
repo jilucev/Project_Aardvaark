@@ -3,11 +3,13 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if User.find_by(email: params[:email])
-      user_assign
-    elsif Organization.find_by(email: params[:email])
-      organization_assign
-    end
+    # if User.find_by(email: params[:email])
+    #   user_assign
+    # elsif Organization.find_by(email: params[:email])
+    #   organization_assign
+    # else
+    #   render :root
+    # end
   end
 
   def user_assign
@@ -20,7 +22,7 @@ class SessionsController < ApplicationController
         redirect_to users_path
       else
         #Fix this
-        render :new
+        render :root
       end
   end
 
@@ -31,7 +33,7 @@ class SessionsController < ApplicationController
         redirect_to organizations_path
       else
         #Fix this
-        render :new
+        render :root
       end
   end
 
