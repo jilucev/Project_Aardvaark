@@ -47,8 +47,8 @@
   %br
   = submit_tag "Submit"
 
-- if current_user
-  - if current_user.firstname
+- if !current_user.nil?
+  - if current_user.try(:firstname)
     %h3.text-center Hey, hey #{current_user.firstname}, you're a volunteer!
     = link_to "Log Out", session_path("current_user"), method: :delete
   - else

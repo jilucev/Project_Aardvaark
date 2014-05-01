@@ -1,10 +1,10 @@
 #container
   %h1.text-center organizations index
-  - if current_user.firstname
-    - if current_user.firstname
+  - if !current_user.nil?
+    - if current_user.try(:firstname)
       %h3.text-center Hey, hey #{current_user.firstname}, you're a volunteer and shouldn't be here!
     - else
-      %h3.text-center Hey, hey #{current_user.name}, you so'n so
+      %h3.text-center Hey, hey #{current_user.name}, you so'n so, Organization, you
   
 
   .row
