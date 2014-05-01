@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
         redirect_to users_path
       elsif user && user.authenticate(params[:password])
         session[:user_id] = user.id
-        redirect_to users_path
+        redirect_to user_path(user.id)
       else
         render :file => 'public/index.html.haml'
       end
@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
     organization = Organization.find_by(email: params[:email])
       if organization && organization.authenticate(params[:password]) 
         session[:organization_id] = organization.id
-        redirect_to organizations_path
+        redirect_to organization_path(organization.id)
       else
         render :file => 'public/index.html.haml'
       end
