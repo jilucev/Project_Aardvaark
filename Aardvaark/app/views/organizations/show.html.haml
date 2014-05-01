@@ -1,51 +1,47 @@
 #container
-  %h1.text-center organizations index
   - if !current_user.nil?
     - if current_user.try(:firstname)
-      %h3.text-center Hey, hey #{current_user.firstname}, you're a volunteer and shouldn't be here!
+      %h1.text-center Hey, hey #{current_user.firstname}, you're a volunteer and shouldn't be here!
       %h3.text-center= link_to "Log Out", session_path("current_user"), method: :delete
     - else
-      %h3.text-center Hey, hey #{current_user.name}, you so'n so, Organization, you
+      %h1.text-center Hey, hey #{current_user.name}, you so'n so, Organization, you
       %h3.text-center= link_to "Log Out", session_path("current_user"), method: :delete
-  
 
   .row
     .col-xs-4.col-md-4
     .col-xs-4.col-md-4.text-center
-      %h3 Registered organizations
-      - @organizations.each do |org|
-        = org.name
-        = link_to "GO THIS PAGE, PEON!", organization_path(org)
-        %br
-    .col-xs-4.col-md-4
-  
-  .row
-    .col-xs-4.col-md-4
-    .col-xs-4.col-md-4.text-center
-      %h3 Registered events
-      - @events.each do |event|
+      %h2= @organization.name+"'s Events" 
+      - @organization.events.each do |event|
         %h4= event.description
-        = event.location+" / "+event.date.to_s+" / "+event.organization_id.to_s
-        = link_to "GO THIS PAGE, PEON!", event_path(event)
+        = event.location+" / "+event.date.to_s
         %br
     .col-xs-4.col-md-4
 
   .row
     .col-xs-4.col-md-4
     .col-xs-4.col-md-4.text-center
-      %h3 Organization sign up
-      = form_for @organization do |f|
-        = f.text_field :name, placeholder: "name of organization"
+      %h2 Create an event    
+      = form_for ([@organization, @event]) do |f|
+        = f.label "date"
         %br
-        = f.text_field :representative_name, placeholder: "name of representative"
+        = f.date_field :date
         %br
-        = f.text_field :email, placeholder: "email"
+        = f.label "event time"
         %br
-        = f.password_field :password, placeholder: "password"
+        = f.time_field :event_time
+        %br
+        = f.label "location"
+        %br
+        = f.text_field :location
+        %br
+        = f.label "description"
+        %br
+        = f.text_area :description
         %br
         = f.submit "Submit"
-        %br    
-    .col-xs-4.col-md-4
+        %br
+    .col-xs-4.col-md-4    
+
 
 
 / - if current_user

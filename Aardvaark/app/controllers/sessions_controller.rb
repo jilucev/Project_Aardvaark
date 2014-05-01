@@ -21,8 +21,7 @@ class SessionsController < ApplicationController
         session[:user_id] = user.id
         redirect_to users_path
       else
-        #Fix this
-        render :root
+        render :file => 'public/index.html.haml'
       end
   end
 
@@ -32,8 +31,7 @@ class SessionsController < ApplicationController
         session[:organization_id] = organization.id
         redirect_to organizations_path
       else
-        #Fix this
-        render :root
+        render :file => 'public/index.html.haml'
       end
   end
 

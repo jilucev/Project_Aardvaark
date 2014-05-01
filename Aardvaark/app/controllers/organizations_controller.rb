@@ -5,7 +5,8 @@ class OrganizationsController < ApplicationController
     @organization = Organization.new
     @users = User.all
     @events = Event.all
-   
+    @event = Event.new
+
     # if params[:age]
     #   query_params = params[:age].split("-")
     #   min = query_params[0].strip.to_i
@@ -14,9 +15,14 @@ class OrganizationsController < ApplicationController
     # end
   end
 
-   def new
+  def show
+    @event = Event.new
+    @organization = Organization.find(params[:id])
+  end
+
+  def new
     @organization = Organization.new
-    end
+  end
 
   def create
     @organization = Organization.new(organization_params)
@@ -31,10 +37,6 @@ class OrganizationsController < ApplicationController
 
 
   def edit
-  end
-
-  def show
-    @organization = Organization.find(params[:id])
   end
 
   def search
