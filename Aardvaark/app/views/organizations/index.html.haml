@@ -1,50 +1,58 @@
-%h1 organizations index
-
-%h3 Organization sign in/up
-
-= form_for @organization do |f|
-
-  = f.label "name of organization"
-  = f.text_field :name
-  %br
-  = f.label "name of representative"
-  = f.text_field :representative_name
-  %br
-  = f.label "email"
-  = f.text_field :email
-  %br
-  = f.label "password"
-  = f.password_field :password
-  %br
-  = f.submit "Submit"
-  %br
-
-= form_tag session_path do#, :method => :post do 
-
-  = label_tag "email"
-  = text_field_tag "email"
-  %br
-  = label_tag :password
-  = password_field_tag :password
-  %br
-  = submit_tag "Submit"
-
+#container
+  %h1.text-center organizations index
+  - if !current_user.nil?
+    - if current_user.try(:firstname)
+      %h3.text-center Hey, hey #{current_user.firstname}, you're a volunteer and shouldn't be here!
+      %h3.text-center= link_to "Log Out", session_path("current_user"), method: :delete
+    - else
+      %h3.text-center Hey, hey #{current_user.name}, you so'n so, Organization, you
+      %h3.text-center= link_to "Log Out", session_path("current_user"), method: :delete
   
-/ - if current_user
-/   %h3= "logout, #{current_user.firstname}"
-/   = button_to "Logout", session_path, method: :delete
 
-/ %h2 list of volunteers
+  .row
+    .col-xs-4.col-md-4
+    .col-xs-4.col-md-4.text-center
+      %h3 Registered organizations
+      - @organizations.each do |org|
+        = org.name
+        = link_to "GO THIS PAGE, PEON!", organization_path(org)
+        %br
+    .col-xs-4.col-md-4
+  
+  .row
+    .col-xs-4.col-md-4
+    .col-xs-4.col-md-4.text-center
+      %h3 Registered events
+      - @events.each do |event|
+        %h4= event.description
+        = event.location+" / "+event.date.to_s+" / "+event.organization_id.to_s
+        = link_to "GO THIS PAGE, PEON!", event_path(event)
+        %br
+    .col-xs-4.col-md-4
 
-/ - @users.each do |user|
-/   - volunteer = user.firstname
-/   %p #{volunteer}
+  .row
+    .col-xs-4.col-md-4
+    .col-xs-4.col-md-4.text-center
+      %h3 Organization sign up
+      = form_for @organization do |f|
+        = f.text_field :name, placeholder: "name of organization"
+        %br
+        = f.text_field :representative_name, placeholder: "name of representative"
+        %br
+        = f.text_field :email, placeholder: "email"
+        %br
+        = f.password_field :password, placeholder: "password"
+        %br
+        = f.submit "Submit"
+        %br    
+    .col-xs-4.col-md-4
+
 
 
 / %h2 filter volunteers
 
 / = form_tag organizations_search_path do 
-  
+
 /   = label_tag "search by vehicle"
 /   = text_field_tag :vehicle
 /   %br
@@ -54,25 +62,3 @@
 /   = label_tag "search by age"
 /   = select_tag "age", "<option>18 -25</option><option>26 - 45</option><option>46 + </option>".html_safe
 /   = submit_tag("search")
-
-%h2 Create an event
-    
-= form_for Event.new do |f|
-
-  = f.label "date"
-  = f.date_field :date
-  %br
-  = f.label "event time"
-  = f.time_field :event_time
-  %br
-  = f.label "location"
-  = f.text_field :location
-  %br
-  = f.label "description"
-  = f.text_field :description
-  %br
-  = f.submit "Submit"
-  %br
-
-  - @events.each do |event|
-    %p= event.location+" / "+event.date.to_s+" / "+event.organization_id.to_s

@@ -1,0 +1,35 @@
+#container
+  - if !current_user.nil?
+    - if current_user.try(:firstname)
+      %h1.text-center Hey, hey #{current_user.firstname}, you're a volunteer. Good for you.
+      %h3.text-center= link_to "Log Out", session_path("current_user"), method: :delete
+    - else
+      %h1.text-center Hey, hey #{current_user.name}, get out!
+      %h3.text-center= link_to "Log Out", session_path("current_user"), method: :delete
+
+  .row
+    .col-xs-4.col-md-4
+    .col-xs-4.col-md-4.text-center
+      %h3.text-center This is the big list of organizations
+      - @organizations.each do |org|
+        = org.name+" // "
+        = link_to "Request to Join", session_path("current_user"), method: :delete
+        %br
+
+  %dl
+    %dt Pic
+    %dd showing your cuteness and loveability
+    %dt My events
+    %dd what you've signed up for 
+    %dd deets(where/when/who/how)
+    %dt Upcoming Events
+    %dd a board of events you can choose to join. Maybe they are starred if they've been filtered-meaning you are expecially useful for them!
+    %dt Past Events
+    %dd A record of past involvement and attendance(visible as a reliability rating or no?)
+
+
+
+
+
+
+

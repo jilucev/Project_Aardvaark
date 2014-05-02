@@ -1,51 +1,53 @@
-
 class SessionsController < ApplicationController
+
   def new
   end
 
   def create
-    if User.find_by(email: params[:email])
-      user_assign
-    elsif Organization.find_by(email: params[:email])
-      organization_assign
-    end
+    # if User.find_by(email: params[:email])
+    #   user_assign
+    # elsif Organization.find_by(email: params[:email])
+    #   organization_assign
+    # else
+    #   render :root
+    # end
   end
 
   def user_assign
     user = User.find_by(email: params[:email])
-        if user && user.authenticate(params[:password]) && !user.organization
-      session[:user_id] =  user.id
-      redirect_to users_path
-    elsif user && user.authenticate(params[:password])
-      session[:user_id] =  user.id
-      redirect_to users_path
-    else
-      #Fix this
-      render :new
-    end
+
+      if user && user.authenticate(params[:password])
+        session[:user_id] = user.id
+        redirect_to user_path(user.id)
+      else
+        render :file => 'public/index.html.haml'
+      end
+      
+      # if user && user.authenticate(params[:password]) && !user.organization
+      #   session[:user_id] = user.id
+      #   redirect_to users_path
+      # elsif user && user.authenticate(params[:password])
+      #   session[:user_id] = user.id
+      #   redirect_to user_path(user.id)
+      # else
+      #   render :file => 'public/index.html.haml'
+      # end
   end
 
   def organization_assign
     organization = Organization.find_by(email: params[:email])
-    if organization && organization.authenticate(params[:password]) 
-      session[:organization_id] =  organization.id
-      redirect_to organizations_path
-    else
-      #Fix this
-      render :new
-    end
+      
+      if organization && organization.authenticate(params[:password]) 
+        session[:organization_id] = organization.id
+        redirect_to organization_path(organization.id)
+      else
+        render :file => 'public/index.html.haml'
+      end
   end
-
 
   def destroy
-    if @current_user 
-      session[:id] = nil
-    else
-      puts "You're already logged out, sis!"
-
-      
-      # session[:user_id] = nil || session[:organization_id] = nil
+    session[:user_id] = nil || session[:organization_id] = nil
     redirect_to root_path, notice: "Peace!"
   end
-  end
+
 end

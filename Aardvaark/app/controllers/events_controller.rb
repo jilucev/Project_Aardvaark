@@ -1,20 +1,29 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.all
+    restrict_access
+    # @events = Event.all
   end
 
   def new
-    @event = Event.new
+    @organization = Organization.find(params[:id])
+    @event = @organization.events.build
+  end
+
+  def show
+    # @event = Event.find(params[:id])
   end
 
   def create
-    @event = Event.new(event_params)
-      if @event.save
-        redirect_to organizations_path
-      else
-        render :new
-      end
+    @organization = Organization.find(params[:organization_id])
+    @event = @organization.events.build(event_params)
+    @event.organization_id = current_user.id
+
+    if @event.save
+      redirect_to organization_path(params[:organization_id])
+    else
+      render :new
+    end
   end
 
   def edit
@@ -22,9 +31,23 @@ class EventsController < ApplicationController
   end
 
   def update
+    @event = Event.find(params[:id])
+
+    if @event.update_attributes(event_params)
+      redirect_to organization_path(params[:organization_id])
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @event = Event.find(params[:id])
+
+    if @event.destroy
+      redirect_to organization_path(params[:organization_id])
+    else
+      render organization_path(params[:organization_id])
+    end
   end
 
   protected

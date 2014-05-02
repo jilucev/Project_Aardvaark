@@ -14,7 +14,7 @@
           .flat
             .volunteer.back.glyphicon.glyphicon-circle-arrow-right
         .col-xs-10.col-md-6.text-center.landing-choice
-          = form_tag session_path do#, :method => :post do 
+          = form_tag user_assign_path do 
             .input-group.margin-bottom-sm
               %span.input-group-addon
                 %i.fa.fa-envelope-o.fa-fw
@@ -44,7 +44,7 @@
       %li.slide.wrapper
         .col-xs-1.col-md-3.text-center.landing-choice
         .col-xs-10.col-md-6.text-center.landing-choice
-          = form_tag session_path do#, :method => :post do 
+          = form_tag organization_assign_path do
             .input-group.margin-bottom-sm
               %span.input-group-addon
                 %i.fa.fa-envelope-o.fa-fw

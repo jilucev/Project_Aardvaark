@@ -47,8 +47,10 @@
   %br
   = submit_tag "Submit"
 
-/ %h2= "logout, #{current_user.firstname}"
-
-= form_tag session_path do
-
-  = submit_tag "Logout"
+- if !current_user.nil?
+  - if current_user.try(:firstname)
+    %h3.text-center Hey, hey #{current_user.firstname}, you're a volunteer!
+    = link_to "Log Out", session_path("current_user"), method: :delete
+  - else
+    %h3.text-center Hey, hey #{current_user.name}, you so'n so, get outta here you Organization!
+    = link_to "Log Out", session_path("current_user"), method: :delete

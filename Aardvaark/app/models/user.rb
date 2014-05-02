@@ -6,6 +6,11 @@ class User < ActiveRecord::Base
   validates :firstname, presence: true
   validates :lastname, presence: true
   validates :email, presence: true
+  validates :password, length: { minimum: 2 }, allow_nil: true
+
+  # before_validation(on: :create) do
+  #   self.number = number.gsub(/[^0-9]/, "") if attribute_present?("number")
+  # end
 
   scope :with_vehicle, -> ( vehicle )  do
     where(vehicle: true)
@@ -17,6 +22,12 @@ class User < ActiveRecord::Base
 
   scope :are_female, -> (female) do
     where(gender: female)
+  end
+
+  scope :relevant_events, -> (organization) do
+    # self.joins(oranizations: organization)
+    # OR
+    # Event.where(organization: org)
   end
 
   def self.search_by_age(min, max)

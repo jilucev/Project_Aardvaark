@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def index
+    restrict_access
     @users = User.new
   end
 
@@ -20,6 +21,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    restrict_access
+    @organizations = Organization.all
     @user = User.find_by(params[:id])
   end
 

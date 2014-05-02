@@ -1,0 +1,71 @@
+#container
+  - if !current_user.nil?
+    - if current_user.try(:firstname)
+      %h1.text-center Hey, hey #{current_user.firstname}, you're a volunteer and shouldn't be here!
+      %h3.text-center= link_to "Log Out", session_path("current_user"), method: :delete
+    - else
+      %h1.text-center Hey, hey #{current_user.name}, you so'n so, Organization, you
+      %h3.text-center= link_to "Log Out", session_path("current_user"), method: :delete
+
+  .row
+    .col-xs-4.col-md-4
+    .col-xs-4.col-md-4.text-center
+      %h2= @organization.name+"'s Events" 
+      - @organization.events.each do |event|
+        %h4= event.description
+        = event.location+" / "+event.date.to_s
+        = link_to "Delete?", organization_event_path(current_user, event.id), method: :delete, confirm: "You sure?"
+        = link_to "Modify?", edit_organization_event_path(current_user, event.id)
+        %br
+    .col-xs-4.col-md-4
+
+  .row
+    .col-xs-4.col-md-4
+    .col-xs-4.col-md-4.text-center
+      %h2 Create an event    
+      = form_for ([@organization, @event]) do |f|
+        = f.label "date"
+        %br
+        = f.date_field :date
+        %br
+        = f.label "event time"
+        %br
+        = f.time_field :event_time
+        %br
+        = f.label "location"
+        %br
+        = f.text_field :location
+        %br
+        = f.label "description"
+        %br
+        = f.text_area :description
+        %br
+        = f.submit "Submit"
+        %br
+    .col-xs-4.col-md-4    
+
+
+
+/ - if current_user
+/   %h3= "logout, #{current_user.firstname}"
+/   = button_to "Logout", session_path, method: :delete
+
+/ %h2 list of volunteers
+
+/ - @users.each do |user|
+/   - volunteer = user.firstname
+/   %p #{volunteer}
+
+/ %h2 filter volunteers
+
+/ = form_tag organizations_search_path do 
+
+/   = label_tag "search by vehicle"
+/   = text_field_tag :vehicle
+/   %br
+/   = label_tag "search by gender"
+/   = text_field_tag :gender
+/   %br
+/   = label_tag "search by age"
+/   = select_tag "age", "<option>18 -25</option><option>26 - 45</option><option>46 + </option>".html_safe
+/   = submit_tag("search")

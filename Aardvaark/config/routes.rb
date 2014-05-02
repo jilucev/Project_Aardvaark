@@ -7,19 +7,31 @@ Rails.application.routes.draw do
   
   get '/users/profile', to: 'users#profile'
 
-  resources :events 
+  resource :event, only: [:show]
   resources :users
-  resources :organizations
+  # resources :organizations
 
-  namespace :organizations do
+  # namespace :organizations do
+  #   resources :events
+  #   resources :users, except: [:create]
+  # end
+
+  resources :organizations do
     resources :events
     resources :users, except: [:create]
   end
+
+
 
   resource :session, only: [:new, :create, :destroy]
 
   post '/organizations/search', to: 'organizations#search'
  
+  post 'user_assign', to: 'sessions#user_assign', as: :user_assign
+  post 'organization_assign', to: 'sessions#organization_assign', as: :organization_assign
+
+  # This will create logout_path and logout_url as named helpers in your application. Calling logout_path will return /exit
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
