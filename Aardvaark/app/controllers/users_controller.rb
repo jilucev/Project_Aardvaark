@@ -22,6 +22,7 @@ class UsersController < ApplicationController
 
   def show
     restrict_access
+    @organizations = Organization.all
     @user = User.find_by(params[:id])
   end
 

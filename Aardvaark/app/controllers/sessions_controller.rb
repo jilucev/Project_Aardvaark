@@ -15,16 +15,23 @@ class SessionsController < ApplicationController
 
   def user_assign
     user = User.find_by(email: params[:email])
-      
-      if user && user.authenticate(params[:password]) && !user.organization
-        session[:user_id] = user.id
-        redirect_to users_path
-      elsif user && user.authenticate(params[:password])
+
+      if user && user.authenticate(params[:password])
         session[:user_id] = user.id
         redirect_to user_path(user.id)
       else
         render :file => 'public/index.html.haml'
       end
+      
+      # if user && user.authenticate(params[:password]) && !user.organization
+      #   session[:user_id] = user.id
+      #   redirect_to users_path
+      # elsif user && user.authenticate(params[:password])
+      #   session[:user_id] = user.id
+      #   redirect_to user_path(user.id)
+      # else
+      #   render :file => 'public/index.html.haml'
+      # end
   end
 
   def organization_assign
@@ -37,7 +44,6 @@ class SessionsController < ApplicationController
         render :file => 'public/index.html.haml'
       end
   end
-
 
   def destroy
     session[:user_id] = nil || session[:organization_id] = nil
