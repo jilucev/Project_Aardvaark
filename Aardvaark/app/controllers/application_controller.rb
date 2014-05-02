@@ -9,7 +9,12 @@ class ApplicationController < ActionController::Base
     if !current_user
       flash[:alert] = "You must log in."
       redirect_to root_path
+    elsif current_user.id != params[:id].to_i #&& !current_user.admin
+      flash[:alert] = "You don't have rights to access this area."
+      redirect_to root_path
     end
+
+
   end
 
   def current_user

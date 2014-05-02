@@ -10,10 +10,9 @@ class EventsController < ApplicationController
     @event = @organization.events.build
   end
 
-  # def show
-  #   # @event = Event.new
-  #   @event = @organization.events.build
-  # end
+  def show
+    # @event = Event.find(params[:id])
+  end
 
   def create
     @organization = Organization.find(params[:organization_id])
@@ -35,6 +34,13 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    @event = Event.find(params[:id])
+
+    if @event.destroy
+      redirect_to organization_path(params[:organization_id])
+    else
+      render organization_path(params[:organization_id])
+    end
   end
 
   protected
