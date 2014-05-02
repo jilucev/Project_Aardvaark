@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   def restrict_access
     if !current_user
       flash[:alert] = "You must log in."
-      redirect_to new_session_path
+      redirect_to root_path
     end
   end
 
@@ -19,10 +19,6 @@ class ApplicationController < ActionController::Base
       @current_user = Organization.find(session[:organization_id])
     end
   end
-  # def current_user
-  #   (@current_user ||= User.find(session[:user_id]) if session[:user_id]) ||
-  #   (@current_user ||= Organization.find(session[:organization_id]) if session[:organization_id])
-  # end
 
   helper_method :current_user
 
@@ -30,5 +26,3 @@ end
 
 
 
-
-  

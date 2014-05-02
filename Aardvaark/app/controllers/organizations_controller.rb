@@ -1,6 +1,7 @@
 class OrganizationsController < ApplicationController
 
   def index
+    restrict_access
     @organizations = Organization.all
     @organization = Organization.new
     @users = User.all
@@ -16,6 +17,7 @@ class OrganizationsController < ApplicationController
   end
 
   def show
+    restrict_access
     @event = Event.new
     @organization = Organization.find(params[:id])
   end

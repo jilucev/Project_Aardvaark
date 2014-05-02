@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
 
   def index
+    restrict_access
     # @events = Event.all
   end
 
@@ -18,7 +19,7 @@ class EventsController < ApplicationController
     @organization = Organization.find(params[:organization_id])
     @event = @organization.events.build(event_params)
     @event.organization_id = current_user.id
-        
+
     if @event.save
       redirect_to organizations_path
     else
