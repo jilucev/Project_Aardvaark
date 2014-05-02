@@ -20,7 +20,7 @@ class EventsController < ApplicationController
     @event.organization_id = current_user.id
 
     if @event.save
-      redirect_to organizations_path
+      redirect_to organization_path(params[:organization_id])
     else
       render :new
     end
