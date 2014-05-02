@@ -1,0 +1,88 @@
+#hero-div
+  #container-fluid
+    .row
+      .col-md-6.text-center
+        .form-div
+
+          %h3 User sign up
+
+          = form_tag users_testhotnessofpage_path do
+            .form-group
+            %i.fa.fa-heart-o.fa-fw
+            = label_tag "first name"
+            = text_field_tag :firstname
+            .form-group
+            %i.fa.fa-heart.fa-fw
+            = label_tag "last name"
+            = text_field_tag :lastname
+            %br
+            %div.form-group
+            .input-group.margin-bottom-sm
+            %i.fa.fa-envelope-o.fa-fw
+            = label_tag "email"
+            = text_field_tag :email
+            %br
+            %div.form-group
+            .input-group.margin-bottom-sm
+            %i.fa.fa-phone.fa-fw
+            = label_tag "phone number"
+            = text_field_tag :phone
+            %br
+            %div.form-group
+            .input-group.margin-bottom-sm
+            %i.fa.fa-stethoscope.fa-fw
+            = label_tag "gender"
+            = select_tag "gender", "<option>female</option><option>male</option><option>-</option>".html_safe
+            %br
+            %div.form-group
+            .input-group.margin-bottom-sm
+            %i.fa.fa-wheelchair.fa-fw
+            = label_tag "age"
+            = text_field_tag :age
+            %br
+            %div.form-group
+            .input-group.margin-bottom-sm
+            %i.fa.fa-truck.fa-fw
+            = label_tag "Do you have a vehicle?"
+            = select_tag "vehicle", "<option>yes</option><option>no</option>".html_safe
+            %br
+            %div.form-group
+            .input-group.margin-bottom-sm
+            %i.fa.fa-thumbs-up.fa-fw
+            = label_tag "how many passengers can your vehicle take?"
+            = text_field_tag :passenger_capacity
+            %br
+            %div.form-group
+            .input-group.margin-bottom-sm
+            %i.fa.fa-key.fa-fw
+            = label_tag "password"
+            = text_field_tag :password
+            %br
+            = submit_tag "Submit"
+            %br
+
+      .col-md-6.text-center
+        .form-div2
+          .row
+            .col-md-12
+              .half-way-house-of-vertical-lifestyles
+                %h2 Log In
+
+                = form_tag session_path do
+                  .input-group.margin-bottom-sm
+                  %i.fa.fa-envelope-o.fa-fw
+                  = label_tag "email"
+                  = text_field_tag "email"
+                  %br
+                  .input-group.margin-bottom-sm
+                  %i.fa.fa-key.fa-fw
+                  = label_tag :password
+                  = password_field_tag :password
+                  = submit_tag "Submit"
+                
+                %hr.biggah
+
+              .half-way-house-of-vertical-lifestyles
+                %h2= "logout, #{'you'}"
+                = form_tag session_path do
+                  = submit_tag "Logout"

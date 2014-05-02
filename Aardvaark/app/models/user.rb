@@ -30,5 +30,5 @@ class User < ActiveRecord::Base
   #   events += organization.events
   #   end
   #   events.flatten
-  end
+  # end
 end

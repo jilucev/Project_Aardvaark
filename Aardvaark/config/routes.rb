@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root to: 'public#index'
   
   get '/users/profile', to: 'users#profile'
+  get '/users/testhotnessofpage', to: 'users#testhotnessofpage'
 
   resources :events 
   resources :users

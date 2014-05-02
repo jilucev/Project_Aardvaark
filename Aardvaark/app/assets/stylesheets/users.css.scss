@@ -1,3 +1,40 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/*html {
+    height: 100%;
+  background: url("/assets/bgsplash2.jpg") no-repeat center center;
+}*/
+
+#hero-div {
+  height: 100%;
+  background: url("/assets/bgSplash2.jpg") no-repeat center center;
+}
+
+#container-fluid {
+  padding: 20px 50px 20px 50px;
+}
+
+.form-div {
+  border: solid 1px grey;
+  height: 600px;
+  background-color: white;
+  opacity: .50;  
+}
+
+.form-div2 {
+  border: solid 1px grey;
+  height: 600px;
+  background-color: white;
+  opacity: .50;
+}
+
+.half-way-house-of-vertical-lifestyles {
+  height: 250px;
+}
+
+.biggah {
+  height: 15px;
+  background-color: black;
+}
+
+:hover{
+  opacity: 1;
+};
