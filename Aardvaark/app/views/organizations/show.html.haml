@@ -14,7 +14,8 @@
       - @organization.events.each do |event|
         %h4= event.description
         = event.location+" / "+event.date.to_s
-        = link_to "Delete?", organization_event_path(current_user, event.id), method: :delete
+        = link_to "Delete?", organization_event_path(current_user, event.id), method: :delete, confirm: "You sure?"
+        = link_to "Modify?", edit_organization_event_path(current_user, event.id)
         %br
     .col-xs-4.col-md-4
 
