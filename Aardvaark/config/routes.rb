@@ -1,27 +1,17 @@
 Rails.application.routes.draw do
 
-  # get 'sessions/new'
-  # get 'sessions/create'
 
   root to: 'public#index'
   
   get '/users/profile', to: 'users#profile'
 
   resource :event, only: [:show]
-  resources :users
-  # resources :organizations
-
-  # namespace :organizations do
-  #   resources :events
-  #   resources :users, except: [:create]
-  # end
-
+  resources :user, only: [:new, :create, :delete]
+  
   resources :organizations do
     resources :events
     resources :users, except: [:create]
   end
-
-
 
   resource :session, only: [:new, :create, :destroy]
 

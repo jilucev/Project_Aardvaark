@@ -14,11 +14,12 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_path, notice: "Hello, #{@user.firstname}!"
+      redirect_to root_path
     else
       render :new
     end
   end
+
 
   def show
     restrict_access
