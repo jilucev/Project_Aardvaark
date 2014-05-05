@@ -10,6 +10,29 @@
   .row
     .col-xs-4.col-md-4
     .col-xs-4.col-md-4.text-center
+      %h2= "Your Volunteer Requests" 
+      - @invites.each do |invite|
+        - request = RelationshipJunction.find_by("user_id = #{invite.id} AND organization_id = #{@organization.id}")
+        %h4= invite.firstname+" "+invite.lastname
+        = link_to "Welcome aboard, sailor?", relationship_junction_path(request.id), method: :patch
+        = link_to "Nope.", relationship_junction_path(request.id), method: :delete
+        %br
+    .col-xs-4.col-md-4
+
+  .row
+    .col-xs-4.col-md-4
+    .col-xs-4.col-md-4.text-center
+      %h2= "Your Volunteers" 
+      - @volunteers.each do |volunteer|
+        - request = RelationshipJunction.find_by("user_id = #{volunteer.id} AND organization_id = #{@organization.id}")
+        %h4= volunteer.firstname+" "+volunteer.lastname
+        = link_to "Nope.", relationship_junction_path(request.id), method: :delete
+        %br
+    .col-xs-4.col-md-4
+
+  .row
+    .col-xs-4.col-md-4
+    .col-xs-4.col-md-4.text-center
       %h2= @organization.name+"'s Events" 
       - @organization.events.each do |event|
         %h4= event.description

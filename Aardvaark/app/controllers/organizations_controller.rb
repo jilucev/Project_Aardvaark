@@ -19,7 +19,9 @@ class OrganizationsController < ApplicationController
   def show
     restrict_access
     @event = Event.new
-    @organization = Organization.find(params[:id])
+    @organization = Organization.find(params[:id]) 
+    @invites = @organization.users.where("role_code = 0")
+    @volunteers = @organization.users.where("role_code = 1")
   end
 
   def new

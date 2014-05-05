@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
   end
 
   def user_assign
+    session[:user_id] = nil || session[:organization_id] = nil
     user = User.find_by(email: params[:email])
 
       if user && user.authenticate(params[:password])
@@ -35,6 +36,7 @@ class SessionsController < ApplicationController
   end
 
   def organization_assign
+    session[:user_id] = nil || session[:organization_id] = nil
     organization = Organization.find_by(email: params[:email])
       
       if organization && organization.authenticate(params[:password]) 

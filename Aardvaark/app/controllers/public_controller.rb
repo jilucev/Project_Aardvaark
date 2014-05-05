@@ -1,7 +1,8 @@
 class PublicController < ApplicationController
 
   def index
-    @users = User.new
+    @user = User.new
+    @organization = Organization.new
   end
 
 end
