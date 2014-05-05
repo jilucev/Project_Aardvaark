@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   def index
     restrict_access
     @users = User.new
-    @display_message = "hgjhg"
   end
 
   def new

@@ -27,4 +27,13 @@ module UsersHelper
       end
     return "Hi #{current_user.firstname}. #{message}"
   end
+
+  # def relevant_events
+  #   events_array = []
+  #   @organizations = Organization.all
+  #   @organizations.each do |organization| 
+  #   events_array << organization.events.where(current_user[:id] == organization.events_users_tables.user_id)
+  #   end
+  #   events.flatten
+  # end
 end
