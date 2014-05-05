@@ -21,6 +21,7 @@ class OrganizationsController < ApplicationController
     @event = Event.new
     @organization = Organization.find(params[:id]) 
     @invites = @organization.users.where("role_code = 0")
+    @volunteers = @organization.users.where("role_code = 1")
   end
 
   def new
