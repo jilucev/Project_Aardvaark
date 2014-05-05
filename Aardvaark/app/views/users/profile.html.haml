@@ -11,7 +11,8 @@
   %dt Past Events
   %dd A record of past involvement and attendance(visible as a reliability rating or no?)
 
-  = p current_user.relevant_events
-  
+  / = p relevant_events
 
-  = p current_user.firstname 
+  / = p current_user.firstname 
+
+  = p user_message(current_user)
