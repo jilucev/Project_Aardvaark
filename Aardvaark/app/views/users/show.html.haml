@@ -13,6 +13,8 @@
       %h3.text-center This is the big list of organizations
       - @organizations.each do |org|
         = org.name+" // "
+        = org.id
+        = link_to "Wanna join?", user_request_path(org), method: :post
         %br
 
   %dl

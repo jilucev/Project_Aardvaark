@@ -5,17 +5,20 @@ class RelationshipJunctionsController < ApplicationController
   end
 
   def create
-    @invite = RelationshipJunction.new(invite_params)
-
-    # user.relationship_junctions.create(:organization => org, role_code: 0)
-
-    if @invite.save
-      #YES
-    else
-      #render :new
-    end
+    # @invite = RelationshipJunction.new(invite_params)
+    
+    # if @invite.save
+    #   #YES
+    # else
+    #   #render :new
+    # end
   end
 
+  def user_request
+    current_user.relationship_junctions.create(organization_id: params[:organization_id], role_code: 0)
+
+    redirect_to user_path(current_user)
+  end
   def edit
     @volunteer = RelationshipJunction.find(params[:id])
   end
