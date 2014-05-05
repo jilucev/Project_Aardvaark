@@ -33,12 +33,18 @@ class UsersController < ApplicationController
   end
 
   def profile
-    
   end
 
   def destroy
   end
 
+  def volunteer_request
+    # @volunteer_request = (organization: params[:organization_id], user: params[:id], role_code: 0)
+
+    # if @volunteer_request.save
+    #   redirect_to root_path, notice: "Request sent to #{organization}! Super duper!"
+    # end
+  end
 
 protected
 

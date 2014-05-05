@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resource :event, only: [:show]
   resources :users
+  resources :relationship_junctions
   # resources :organizations
 
   # namespace :organizations do
@@ -21,6 +22,9 @@ Rails.application.routes.draw do
     resources :users, except: [:create]
   end
 
+  # resources :users do
+  #   post 'volunteer_request', :on => :collection
+  # end
 
 
   resource :session, only: [:new, :create, :destroy]
@@ -29,7 +33,6 @@ Rails.application.routes.draw do
  
   post 'user_assign', to: 'sessions#user_assign', as: :user_assign
   post 'organization_assign', to: 'sessions#organization_assign', as: :organization_assign
-
   # This will create logout_path and logout_url as named helpers in your application. Calling logout_path will return /exit
 
 
