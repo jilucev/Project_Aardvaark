@@ -18,9 +18,7 @@ class SessionsController < ApplicationController
 
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
-        @current_user = user
         redirect_to users_profile_path(user.id)
-        check_profile(current_user)
       else
         render :file => 'public/index.html.haml'
       end
