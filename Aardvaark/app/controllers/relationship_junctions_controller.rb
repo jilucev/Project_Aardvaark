@@ -19,6 +19,29 @@ class RelationshipJunctionsController < ApplicationController
 
     redirect_to user_path(current_user)
   end
+
+  def upgrade
+    @upgrade = RelationshipJunction.find(params[:id])
+    @upgrade.role_code = 2
+
+    if @upgrade.save
+      redirect_to organization_path(current_user)
+    else
+      render organization_path(current_user)
+    end
+  end
+
+  def downgrade
+    @downgrade = RelationshipJunction.find(params[:id])
+    @downgrade.role_code = 1
+
+    if @downgrade.save
+      redirect_to organization_path(current_user)
+    else
+      render organization_path(current_user)
+    end
+  end
+
   def edit
     @volunteer = RelationshipJunction.find(params[:id])
   end

@@ -28,7 +28,10 @@ Rails.application.routes.draw do
   post 'organization_assign', to: 'sessions#organization_assign', as: :organization_assign
   # This will create logout_path and logout_url as named helpers in your application. Calling logout_path will return /exit
   post 'user_request/:organization_id', to: 'relationship_junctions#user_request', as: :user_request
-
+  
+  post 'upgrade/:id', to: 'relationship_junctions#upgrade', as: :upgrade
+  post 'downgrade/:id', to: 'relationship_junctions#downgrade', as: :downgrade
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
