@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :relationship_junctions
   has_many :organizations, through: :relationship_junctions
+  has_many :events, through: :event_users
   has_secure_password
   
   # validates :firstname, presence: true
