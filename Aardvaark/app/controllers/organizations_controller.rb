@@ -20,8 +20,9 @@ class OrganizationsController < ApplicationController
     restrict_access
     @event = Event.new
     @organization = Organization.find(params[:id]) 
-    @invites = @organization.users.where("role_code = 0")
-    @volunteers = @organization.users.where("role_code = 1")
+    @invites = Organization.find_requests(@organization)
+    @volunteers = Organization.find_volunteers(@organization)
+    @volunteer_supers = Organization.find_volunteer_supers(@organization)
   end
 
   def new

@@ -11,6 +11,16 @@ class Organization < ActiveRecord::Base
   #   self.number = number.gsub(/[^0-9]/, "") if attribute_present?("number")
   # end  
 
-    def findRecord
+  def self.find_requests(org)
+    org.users.where("role_code = 0")
   end
+
+  def self.find_volunteers(org)
+    org.users.where("role_code = 1")
+  end
+
+  def self.find_volunteer_supers(org)
+    org.users.where("role_code = 2")
+  end
+
 end
