@@ -58,41 +58,8 @@
                 %h3= event.organization_id
                 %p.list-group-item-text
                   = event.description
-    .row
-      .col-xs-12
-        %p.subheading
-          CREATE AN EVENT
-        = form_for ([@user, @event]) do |f|
-          .input-group.margin-bottom-sm
-            %span.input-group-addon
-              %i.fa.fa-calendar.fa-fw
-            = f.select :type_of_event, ["Street Hit"], {}, { :class => "form-control" }
-          .input-group.margin-bottom-sm
-            %span.input-group-addon
-              %i.fa.fa-calendar.fa-fw
-            = f.collection_select :organization_id, Organization.all, :id, :name, {:prompt => "Who you doing this for?"}, { :class => "form-control" }
-          .input-group.margin-bottom-sm
-            %span.input-group-addon
-              %i.fa.fa-calendar.fa-fw
-            = f.collection_select :user_id, [current_user], :id, :firstname, {}, { :class => "form-control" }
-          .input-group.margin-bottom-sm
-            %span.input-group-addon
-              %i.fa.fa-calendar.fa-fw
-            = f.date_field :date, class: "form-control"
-          .input-group.margin-bottom-sm
-            %span.input-group-addon
-              %i.fa.fa-clock-o.fa-fw
-            = f.time_field :event_time, class: "form-control"
-          .input-group.margin-bottom-sm
-            %span.input-group-addon
-              %i.fa.fa-location-arrow.fa-fw
-            = f.text_field :location, class: "form-control", placeholder: "location"
-          .input-group.margin-bottom-sm
-            %span.input-group-addon
-              %i.fa.fa-quote-left.fa-fw
-            = f.text_area :description, class: "form-control"
-          %span.input-group-btn
-            = f.submit "Submit", class: "btn btn-default"
+    
+    = render "user_create_an_event"
 
     .row
       .col-xs-1.col-md-2
