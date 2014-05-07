@@ -35,4 +35,12 @@ class User < ActiveRecord::Base
   def self.search_by_age(min, max)
     self.where("age BETWEEN ? AND ?", min, max)
   end
+
+  def self.upcoming_events(user)
+    user.events.all
+  end
+
+  def self.open_events(user)
+    user.events
+  end
 end

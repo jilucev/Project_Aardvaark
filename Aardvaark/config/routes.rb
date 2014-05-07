@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get '/users/profile', to: 'users#profile'
 
   resource :event, only: [:show]
-  resources :users
   resources :relationship_junctions
   # resources :organizations
 
@@ -14,6 +13,10 @@ Rails.application.routes.draw do
   #   resources :events
   #   resources :users, except: [:create]
   # end
+
+  resources :users do
+    resources :events
+  end
 
   resources :organizations do
     resources :events

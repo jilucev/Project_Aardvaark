@@ -1,36 +1,99 @@
 #container
-  - if !current_user.nil?
-    - if current_user.try(:firstname)
-      %h1.text-center Hey, hey #{current_user.firstname}, you're a volunteer. Good for you.
-      %h3.text-center= link_to "Log Out", session_path("current_user"), method: :delete
-    - else
-      %h1.text-center Hey, hey #{current_user.name}, get out!
-      %h3.text-center= link_to "Log Out", session_path("current_user"), method: :delete
-
   .row
-    .col-xs-4.col-md-4
-    .col-xs-4.col-md-4.text-center
-      %h3.text-center This is the big list of organizations
-      - @organizations.each do |org|
-        = org.name+" // "
-        = org.id
-        = link_to "Wanna join?", user_request_path(org), method: :post
-        %br
+    .col-xs-3
+      .row
+        .quad-nav.events
+      .row
+        .quad-nav.org
+    .col-xs-6.no-margin
+      .advk-logo.text-center
+    .col-xs-3
+      .row
+        .quad-nav.update-profile
+      .row
+        .quad-nav.logout
 
-  %dl
-    %dt Pic
-    %dd showing your cuteness and loveability
-    %dt My events
-    %dd what you've signed up for 
-    %dd deets(where/when/who/how)
-    %dt Upcoming Events
-    %dd a board of events you can choose to join. Maybe they are starred if they've been filtered-meaning you are expecially useful for them!
-    %dt Past Events
-    %dd A record of past involvement and attendance(visible as a reliability rating or no?)
+  .content-container
+    .row
+      .col-xs-12
+        %p.subheading
+          YOUR EVENTS
+        - if @upcoming_events.length == 0
+          %p= "No events! Get involved, you slacker!"
+        - else
+          .list-group
+            - @upcoming_events.each do |event|
+              = link_to user_event_path(current_user.id, :id => event.id), :class => "list-group-item" do
+                %h4.list-group-item-heading 
+                  STREET HIT
+                  %strong
+                    %small= event.date.to_s
+                %h3= Organization.find(event.organization_id).name.to_s
+                %p.list-group-item-text
+                  = event.description
+    .row
+      .col-xs-12
+        %p.subheading
+          UPCOMING EVENTS
+        - if @open_events.length == 0
+          %p= "Nothing important's happening in your life."
+        - else
+          .list-group
+            - @open_events.each do |event|
+              = link_to user_event_path(current_user.id, :id => event.id), :class => "list-group-item" do
+                %h4.list-group-item-heading
+                  WALKATHON
+                  %strong
+                    %small= event.date.to_s
+                %h3= Organization.find(event.organization_id).name.to_s
+                %p.list-group-item-text
+                  = event.description
+    .row
+      .col-xs-12
+        %p.subheading
+          CREATE AN EVENT
+        = form_for ([@user, @event]) do |f|
+          .input-group.margin-bottom-sm
+            %span.input-group-addon
+              %i.fa.fa-building-o.fa-fw
+            = f.collection_select :organization_id, Organization.all, :id, :name, {:prompt => "Who you doing this for?"}, { :class => "form-control" }
+          #disabled.input-group.margin-bottom-sm
+            %span.input-group-addon
+              %i.fa.fa-user.fa-fw
+            = f.collection_select :user_id, [current_user], :id, :firstname, {}, { :class => "form-control" }
+          .input-group.margin-bottom-sm
+            %span.input-group-addon
+              %i.fa.fa-calendar.fa-fw
+            = f.date_field :date, class: "form-control"
+          .input-group.margin-bottom-sm
+            %span.input-group-addon
+              %i.fa.fa-clock-o.fa-fw
+            = f.time_field :event_time, class: "form-control"
+          .input-group.margin-bottom-sm
+            %span.input-group-addon
+              %i.fa.fa-location-arrow.fa-fw
+            = f.text_field :location, class: "form-control", placeholder: "location"
+          .input-group.margin-bottom-sm
+            %span.input-group-addon
+              %i.fa.fa-quote-left.fa-fw
+            = f.text_area :description, class: "form-control"
+          %span.input-group-btn
+            = f.submit "Submit", class: "btn btn-default"
+
+    .row
+      .col-xs-1.col-md-2
+      .col-xs-10.col-md-8
+        %h3 This is the big list of organizations
+        - @organizations.each do |org|
+          = org.name+" // "
+          = org.id
+          = link_to "Wanna join?", user_request_path(org), method: :post
+          %br
+        .col-xs-1.col-md-2
 
 
-
-
-
-
-
+    #padding-bottom-hack    
+    .navbar.navbar-default.navbar-fixed-bottom{role: "navigation"}
+      .container-fluid
+        = render "user_name_check"
+        = link_to "LOG OUT", session_path("current_user"), method: :delete

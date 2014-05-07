@@ -18,9 +18,13 @@ html {
 
 body {
   height: 100%;
-  /*background: url("/assets/papar_texture.jpg");*/
+  background: url("/assets/papar_texture.jpg");
   font-family: 'Share', sans-serif, 'cursive';
   font-weight: 400;
+}
+
+#padding-bottom-hack {
+  height: 120px;
 }
 
 ul {
@@ -32,6 +36,10 @@ ul {
 #container {
   height: 100%;
   width: 100%;
+}
+
+.content-container {
+  margin: 0 4px 0 4px;
 }
 
 .wrapper {
@@ -71,11 +79,88 @@ ul {
   }
 }
 
+.img-container {
+  height: 150px;
+  width: 150px;
+  border: 1px solid black;
+  border-radius: 100%;
+  float: left;
+  margin: 5px;
+}
+
+.profile-pic {
+  height: 100%;
+  width: 100%;
+  border: 2px solid white;
+}
+
+.header-nav {
+  height: 100%;
+}
+
+.user-name {
+  height: 50%;
+  padding: 10px 2px 0 0;
+  border-bottom: 1px solid black;
+  color: white;
+  background-color: black;
+}
+
+.user-nav {
+  height: 50%;
+}
 
 
+/* WORKING ON USER PAGE STYLING NAV */
 
+.no-margin {
+  margin: 0;
+  padding: 0;
+}
 
+.subheading {
+  font-size: 2em;
+  font-weight: 700;
+  opacity: 0.75;
+  color: #e0e4cc;
+}
 
+.list-group h3{
+  margin: 0;
+}
+
+.advk-logo {
+  height: 90px;
+  width: 100%;
+  background-color: #e0e4cc;
+  margin: 0;
+
+  img {
+    width: 90%;
+    margin: auto;
+  }
+}
+
+.quad-nav {
+  height: 45px;
+  width: 100%;
+}
+.events {
+    background-color: #69d2e7;
+    border-left: 20px solid white;
+  }
+.org {
+    background-color: #f38630;
+    border-left: 20px solid white;
+  }
+.update-profile {
+    background-color: #a7dbd8;
+    border-right: 20px solid white;
+  }
+.logout {
+    background-color: #fa6900;
+    border-right: 20px solid white;
+  }
 
 
 
@@ -267,4 +352,14 @@ ul {
     padding: 5px;
     font-size: 1.5em;
   }
+
+  .img-container {
+  height: 100px;
+  width: 100px;
+  border: 1px solid black;
+  border-radius: 100%;
+  float: left;
+  margin: 5px;
 }
+}
+

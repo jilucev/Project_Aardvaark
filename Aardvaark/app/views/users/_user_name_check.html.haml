@@ -1,0 +1,6 @@
+- if !current_user.nil?
+  - if current_user.try(:firstname)
+    %h2 
+      #{current_user.firstname} #{current_user.lastname}
+  - else
+    %h1.text-center Hey, hey #{current_user.name}, get out!

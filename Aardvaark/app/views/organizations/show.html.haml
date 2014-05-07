@@ -50,7 +50,6 @@
       %h2= @organization.name+"'s Events" 
       - @organization.events.each do |event|
         %h4= event.description
-        = event.location+" / "+event.date.to_s
         = link_to "Delete?", organization_event_path(current_user, event.id), method: :delete, confirm: "You sure?"
         = link_to "Modify?", edit_organization_event_path(current_user, event.id)
         %br
@@ -61,6 +60,10 @@
     .col-xs-4.col-md-4.text-center
       %h2 Create an event    
       = form_for ([@organization, @event]) do |f|
+        =f.label "point person"
+        %br
+        = f.collection_select :user_id, @volunteer_supers.all, :id, :firstname
+        %br
         = f.label "date"
         %br
         = f.date_field :date
