@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
   end
 
   def self.upcoming_events(user)
-    user.events.all
+    Event.all.where("user_id = #{user.id}")
   end
 
   def self.open_events(user)

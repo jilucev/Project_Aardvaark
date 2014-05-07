@@ -28,6 +28,7 @@ class UsersController < ApplicationController
     
     @params = params[:id]
     @user = User.find(@params)
+    
     @upcoming_events = User.upcoming_events(@user)
     @open_events = User.open_events(@user)
   end

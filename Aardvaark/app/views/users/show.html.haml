@@ -28,7 +28,7 @@
                   STREET HIT
                   %strong
                     %small= event.date.to_s
-                %h3= Organization.find(event.organization_id).name.to_s
+                %h3= event.organization_id
                 %p.list-group-item-text
                   = event.description
     .row
@@ -45,7 +45,7 @@
                   WALKATHON
                   %strong
                     %small= event.date.to_s
-                %h3= Organization.find(event.organization_id).name.to_s
+                %h3= event.organization_id
                 %p.list-group-item-text
                   = event.description
     .row
@@ -55,15 +55,15 @@
         = form_for ([@user, @event]) do |f|
           .input-group.margin-bottom-sm
             %span.input-group-addon
-              %i.fa.fa-ticket.fa-fw
+              %i.fa.fa-calendar.fa-fw
             = f.select :type_of_event, ["Street Hit"], {}, { :class => "form-control" }
           .input-group.margin-bottom-sm
             %span.input-group-addon
-              %i.fa.fa-building-o.fa-fw
+              %i.fa.fa-calendar.fa-fw
             = f.collection_select :organization_id, Organization.all, :id, :name, {:prompt => "Who you doing this for?"}, { :class => "form-control" }
-          #disabled.input-group.margin-bottom-sm
+          .input-group.margin-bottom-sm
             %span.input-group-addon
-              %i.fa.fa-user.fa-fw
+              %i.fa.fa-calendar.fa-fw
             = f.collection_select :user_id, [current_user], :id, :firstname, {}, { :class => "form-control" }
           .input-group.margin-bottom-sm
             %span.input-group-addon
