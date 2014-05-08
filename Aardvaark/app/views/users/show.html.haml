@@ -35,7 +35,7 @@
                 %p.list-group-item-text
                   = event.description
     
-    -if @organizer
+    -if @organizer == true
       = render "user_create_an_event"
 
     = render "user_organization_status"

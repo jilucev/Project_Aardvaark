@@ -70,10 +70,10 @@ class User < ActiveRecord::Base
   end
 
   def self.organizer?(user)
-    if RelationshipJunction.where("user_id = ? AND role_code = ?", user.id, 2) != nil
-      true
+    if RelationshipJunction.where("user_id = ? AND role_code = ?", user.id, 2).length == 0
+      return false
     else
-      false
+      return true
     end
   end
 
