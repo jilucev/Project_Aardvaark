@@ -14,33 +14,9 @@
         .quad-nav.logout
 
   .content-container
-    .row
-      .col-xs-12
-        %p.subheading
-          YOUR EVENTS
-        - if @upcoming_events.length == 0
-          %p= "No events! Get involved, you slacker!"
-        - else
-          .list-group
-            - @upcoming_events.each do |event|
-              = link_to user_event_path(current_user.id, :id => event.id), :class => "list-group-item" do
-                %h4.list-group-item-heading 
-                  = event.type_of_event
-                  %strong
-                    %small= event.date.to_s
-                %h3= Organization.find(event.organization_id).name
-                %p.list-group-item-text
-                  %strong= "Organizer "
-                  = User.find(event.user_id).firstname+" "+User.find(event.user_id).lastname
-                %p.list-group-item-text
-                  %strong= "Location "
-                  = event.location
-                %p.list-group-item-text
-                  %strong= "Time "
-                  = event.event_time.to_s(:time)
-                %p.list-group-item-text
-                  %strong= "Notes "
-                  = event.description
+    
+    = render "user_upcoming_events"
+    
     .row
       .col-xs-12
         %p.subheading
@@ -61,14 +37,31 @@
     
     = render "user_create_an_event"
 
-    .row
-      .col-xs-1.col-md-2
-      .col-xs-10.col-md-8
-        %h3 This is the big list of organizations
-        - @organizations.each do |org|
-          = org.name+" // "
-          = org.id
-          = link_to "Wanna join?", user_request_path(org), method: :post
+    .row 
+      .col-xs-12
+        %p.subheading
+          ORGANIZATIONS
+        - @organizations_not_joined.each do |org|
+          %p= Organization.find(org.id).name
+          %p= link_to "Wanna join?", user_request_path(org.id), method: :post
+          %br
+        .col-xs-1.col-md-2
+
+    .row 
+      .col-xs-12
+        %p.subheading
+          PENDING
+        - @organization_volunteer_pending.each do |org|
+          %p= Organization.find(org.id).name
+          %br
+        .col-xs-1.col-md-2
+
+    .row 
+      .col-xs-12
+        %p.subheading
+          YOU VOLUNTEER AT
+        - @organizations_volunteering_at.each do |org|
+          %p= Organization.find(org.id).name
           %br
         .col-xs-1.col-md-2
 

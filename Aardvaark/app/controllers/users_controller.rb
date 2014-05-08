@@ -28,9 +28,12 @@ class UsersController < ApplicationController
     
     @params = params[:id]
     @user = User.find(@params)
-    
+
     @upcoming_events = User.upcoming_events(@user)
     @open_events = User.open_events(@user)
+    @organizations_not_joined = User.organizations_not_joined(@user)
+    @organization_volunteer_pending = User.organization_volunteer_pending(@user)
+    @organizations_volunteering_at = User.organizations_volunteering_at(@user)
   end
 
   def edit

@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_many :event_users
   has_many :events, through: :event_users
   has_secure_password
-  
+
   # validates :firstname, presence: true
   # validates :lastname, presence: true
   validates :email, presence: true
@@ -43,4 +43,36 @@ class User < ActiveRecord::Base
   def self.open_events(user)
     user.events
   end
+
+  def self.organizations_not_joined(user)
+    # joins('LEFT JOIN relationship_junctions ON users.id = relationship_junctions.user_id').where(:'relationship_junctions.user_id' => nil)
+    # joins('LEFT JOIN relationship_junctions ON users.id = relationship_junctions.organization_id')
+    # @squirrel_faced_children_that_are_almost_unloveable_because_of_their_disgraceful_genes = RelationshipJunction.joins(:user).where(user_id: user.id)
+    # RelationshipJunction.joins(:user).where(user_id: user.id)
+    # RelationshipJunction.joins(:user).where("user_id = ? AND role_code = ?", user.id, 0)
+    orgs = RelationshipJunction.joins(:user).where("user_id = ?", user.id).select("organization_id")
+    Organization.where.not(id: orgs)
+  end
+
+  def self.organization_volunteer_pending(user)
+    orgs = RelationshipJunction.joins(:user).where("user_id = ? AND role_code = ?", user.id, 0).select("organization_id")
+    Organization.where(id: orgs)
+  end
+
+  def self.organizations_volunteering_at(user)
+    orgs = RelationshipJunction.joins(:user).where("user_id = ? AND role_code = ?", user.id, 1).select("organization_id")
+    Organization.where(id: orgs)
+  end
+
 end
+
+
+
+
+
+
+
+
+
+
+
