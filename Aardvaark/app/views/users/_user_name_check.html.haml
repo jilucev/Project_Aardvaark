@@ -2,5 +2,6 @@
   - if current_user.try(:firstname)
     %h2 
       #{current_user.firstname} #{current_user.lastname}
+    %p.navbar-text.navbar-right= link_to "LOG OUT", session_path("current_user"), method: :delete
   - else
     %h1.text-center Hey, hey #{current_user.name}, get out!

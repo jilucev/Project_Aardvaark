@@ -36,38 +36,36 @@
                   = event.description
     
     = render "user_create_an_event"
-
-    .row 
+    .row
       .col-xs-12
         %p.subheading
           ORGANIZATIONS
-        - @organizations_not_joined.each do |org|
-          %p= Organization.find(org.id).name
-          %p= link_to "Wanna join?", user_request_path(org.id), method: :post
-          %br
-        .col-xs-1.col-md-2
+        .panel.panel-primary
+          .panel-heading
+            .panel-title
+              Available Organizations
+          .panel-body
+            - @organizations_volunteering_at.each do |org|
+              %p= Organization.find(org.id).name
 
-    .row 
-      .col-xs-12
-        %p.subheading
-          PENDING
-        - @organization_volunteer_pending.each do |org|
-          %p= Organization.find(org.id).name
-          %br
-        .col-xs-1.col-md-2
+        .panel.panel-info
+          .panel-heading
+            .panel-title
+              Pending approval
+          .panel-body
+            - @organization_volunteer_pending.each do |org|
+              %p= Organization.find(org.id).name
 
-    .row 
-      .col-xs-12
-        %p.subheading
-          YOU VOLUNTEER AT
-        - @organizations_volunteering_at.each do |org|
-          %p= Organization.find(org.id).name
-          %br
-        .col-xs-1.col-md-2
-
+        .panel.panel-warning
+          .panel-heading
+            .panel-title
+              Available Organizations
+          .panel-body
+            - @organizations_not_joined.each do |org|
+              %p= Organization.find(org.id).name
+              = link_to "Wanna join?", user_request_path(org.id), method: :post
 
     #padding-bottom-hack    
     .navbar.navbar-default.navbar-fixed-bottom{role: "navigation"}
       .container-fluid
         = render "user_name_check"
-        = link_to "LOG OUT", session_path("current_user"), method: :delete
