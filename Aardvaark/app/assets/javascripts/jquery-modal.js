@@ -1,4 +1,4 @@
-$(function(){
-  $('#myModal').modal('show');
+$(document).ready(function(){
+  // $('#myModal').modal('show');
 
 });
