@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resource :event, only: [:show]
   resources :relationship_junctions
+  resources :event_users
   # resources :organizations
 
   # namespace :organizations do

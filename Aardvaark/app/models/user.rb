@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
   end
 
   def self.organizations_volunteering_at(user)
-    orgs = RelationshipJunction.joins(:user).where("user_id = ? AND role_code = ?", user.id, 1).select("organization_id")
+    orgs = RelationshipJunction.joins(:user).where("user_id = ? AND role_code != ?", user.id, 0).select("organization_id")
     Organization.where(id: orgs)
   end
 

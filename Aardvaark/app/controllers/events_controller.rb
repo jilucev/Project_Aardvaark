@@ -11,6 +11,8 @@ class EventsController < ApplicationController
   end
 
   def show
+    @event_users = EventUser.new
+
     @event = Event.find(params[:id])
     @organization = Organization.find(@event.organization_id)
     @user = User.find(params[:user_id])

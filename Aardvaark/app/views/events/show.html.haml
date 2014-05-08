@@ -37,6 +37,8 @@
         %h3
           %strong= "Notes "
           = @event.description
+        %h3
+          %strong= "Commitments"
         %table.table
           %th Name
           %th Email
@@ -55,9 +57,20 @@
       .col-xs-12
         %p.subheading
           Available Volunteers
-      -@users.each do |user|
-        -if user.id != @user.id
-          = user.firstname
+        = form_for @event_users do |f|
+          -@users.each do |user|
+            -if user.id != @user.id
+              %button.btn.btn-primary{:type => "button", :data => {:toggle => "button"}}
+                = f.check_box :user_id
+                = user.firstname+" "+user.lastname
+          %span.input-group-btn
+            = f.submit "Put these jokers to work", class: "btn btn-default"
+
+    %input.checkbox#1{:type => "checkbox"}
+      %label{:for => 1}
+        Test checkbox
+
+
 
     %h1 THIS WILL THE THE MOST AMAZING PAGE IN THE WORLD
 
