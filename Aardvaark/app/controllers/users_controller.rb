@@ -34,6 +34,7 @@ class UsersController < ApplicationController
     @organizations_not_joined = User.organizations_not_joined(@user)
     @organization_volunteer_pending = User.organization_volunteer_pending(@user)
     @organizations_volunteering_at = User.organizations_volunteering_at(@user)
+    @organizer = User.organizer?(@user)
   end
 
   def edit

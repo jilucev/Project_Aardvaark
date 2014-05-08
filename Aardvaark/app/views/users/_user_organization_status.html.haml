@@ -1,0 +1,28 @@
+.row
+  .col-xs-12
+    %p.subheading
+      ORGANIZATIONS
+    .panel.panel-primary
+      .panel-heading
+        .panel-title
+          Available Organizations
+      .panel-body
+        - @organizations_volunteering_at.each do |org|
+          %p= Organization.find(org.id).name
+
+    .panel.panel-info
+      .panel-heading
+        .panel-title
+          Pending approval
+      .panel-body
+        - @organization_volunteer_pending.each do |org|
+          %p= Organization.find(org.id).name
+
+    .panel.panel-warning
+      .panel-heading
+        .panel-title
+          Available Organizations
+      .panel-body
+        - @organizations_not_joined.each do |org|
+          %p= Organization.find(org.id).name
+          = link_to "Wanna join?", user_request_path(org.id), method: :post

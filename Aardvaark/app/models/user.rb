@@ -64,6 +64,19 @@ class User < ActiveRecord::Base
     Organization.where(id: orgs)
   end
 
+  def self.belong_to_org?(org)
+    users = RelationshipJunction.joins(:user).where("organization_id = ? AND role_code = ?", org.id, 1).select("user_id")
+    User.where(id: users)
+  end
+
+  def self.organizer?(user)
+    if RelationshipJunction.where("user_id = ? AND role_code = ?", user.id, 2) != nil
+      true
+    else
+      false
+    end
+  end
+
 end
 
 

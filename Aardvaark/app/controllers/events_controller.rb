@@ -12,6 +12,11 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @organization = Organization.find(@event.organization_id)
+    @user = User.find(params[:user_id])
+    @users = User.belong_to_org?(@organization)
+
+    @upcoming_events = User.upcoming_events(@user)
   end
 
   def create

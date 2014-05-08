@@ -1,3 +1,69 @@
-%h1 THIS WILL THE THE MOST AMAZING PAGE IN THE WORLD
+#container
+  .row
+    .col-xs-3
+      .row
+        .quad-nav.events
+      .row
+        .quad-nav.org
+    .col-xs-6.no-margin
+      .advk-logo.text-center
+    .col-xs-3
+      .row
+        .quad-nav.update-profile
+      .row
+        .quad-nav.logout
 
-= image_tag "http://i1304.photobucket.com/albums/s540/LenP666/mix/catfish_zps46c073bf.jpg"
+
+  .content-container
+    .panel.panel-default
+      .panel-heading
+        .page-header
+          %h1= @organization.name
+          %h2
+            %small
+              = @event.type_of_event
+              = " on "
+              = @event.date.to_formatted_s(:long_ordinal)
+      .panel-body
+        %h3
+          %strong= "Organizer "
+          = User.find(@event.user_id).firstname+" "+User.find(@event.user_id).lastname
+        %h3
+          %strong= "Location "
+          = @event.location
+        %h3
+          %strong= "Time "
+          = @event.event_time.to_s(:time)
+        %h3
+          %strong= "Notes "
+          = @event.description
+        %table.table
+          %th Name
+          %th Email
+          %th Phone
+          %th Gender
+          %th Remove
+          -User.all.each do |user|
+            %tr
+              %td= user.firstname+" "+user.lastname
+              %td= user.email
+              %td= user.phone
+              %td= user.gender
+              %td= link_to "Remove from event", root_path
+
+    .row
+      .col-xs-12
+        %p.subheading
+          Available Volunteers
+      -@users.each do |user|
+        -if user.id != @user.id
+          = user.firstname
+
+    %h1 THIS WILL THE THE MOST AMAZING PAGE IN THE WORLD
+
+    = image_tag "http://i1304.photobucket.com/albums/s540/LenP666/mix/catfish_zps46c073bf.jpg"
+        
+    #padding-bottom-hack    
+    .navbar.navbar-default.navbar-fixed-bottom{role: "navigation"}
+      .container-fluid
+        = render "users/user_name_check"
