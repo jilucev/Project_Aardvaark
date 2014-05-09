@@ -1,15 +1,5 @@
 #container
   .slider.top
-  #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-    .modal-dialog
-      .modal-content
-        .modal-header
-          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} &times;
-          %h4#myModalLabel.modal-title Modal title
-        .modal-body
-        .modal-footer
-          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
-        %button.btn.btn-primary{:type => "button"} Save changes
     %ul.slides
       %li.slide.wrapper
         .col-xs-1.col-md-2.text-center.landing-choice
@@ -34,7 +24,7 @@
                 %i.fa.fa-key.fa-fw
               = password_field_tag :password, nil, class: "form-control", placeholder: "password"
               %span.input-group-btn
-                = submit_tag "GO", class: "btn btn-default"
+                %span#go-btn-volunteers.btn.btn-default "GO"
         .col-xs-1.col-md-3.text-center.landing-choice
 
   .slider
@@ -64,7 +54,17 @@
                 %i.fa.fa-key.fa-fw
               = password_field_tag :password, nil, class: "form-control", placeholder: "password"
               %span.input-group-btn
-                = submit_tag "GO", id: "go-btn", class: "btn btn-default"
+                %a#go-btn-organizations.btn.btn-default{:href => "#"} "GO"
         .col-xs-1.col-md-3.text-center.landing-choice
           .flat
             .organization.back.glyphicon.glyphicon-circle-arrow-left
+#myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} &times;
+        %h4#myModalLabel.modal-title Modal title
+      .modal-body
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+      %button.btn.btn-primary{:type => "button"} Save changes

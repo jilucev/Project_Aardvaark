@@ -4,6 +4,11 @@ class SessionsController < ApplicationController
   end
 
   def create
+    @session = Session.new
+      if 3 == 3
+        @session.save
+        return "string kitten"
+      end
     # if User.find_by(email: params[:email])
     #   user_assign
     # elsif Organization.find_by(email: params[:email])
@@ -21,7 +26,7 @@ class SessionsController < ApplicationController
         session[:user_id] = user.id
         redirect_to users_profile_path(user.id)
       else
-        javascript_include_tag "jquery-modal"
+        # javascript_include_tag "jquery-modal"
         render :file => 'public/index.html.haml'
       end
       
