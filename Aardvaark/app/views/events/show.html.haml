@@ -52,6 +52,8 @@
               %td= User.find(user.user_id).phone
               %td= User.find(user.user_id).gender
               %td= link_to "Remove from event", event_user_path(user.id), method: :delete
+        %h3
+          Notify volunteers of event details?
 
     .row
       .col-xs-12
