@@ -18,6 +18,9 @@ class EventsController < ApplicationController
     @user = User.find(params[:user_id])
     @users = User.belong_to_org?(@organization)
 
+    @committed_users = User.committed?(@event)
+    @available_users = User.available?(@committed_users)
+
     @upcoming_events = User.upcoming_events(@user)
   end
 

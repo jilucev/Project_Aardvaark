@@ -23,7 +23,9 @@
 <%= yield %>
 
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-  <script src="assets/jquery.glide.min.js"></script>
+  <%= javascript_include_tag "jquery.glide.min.js" %>
+  <%= javascript_include_tag "jquery.multi-select.js" %>
+  
   <script>
     $('.slider.top').glide({
       arrows: false,
@@ -62,6 +64,61 @@
   $( ".organization.back" ).click(function() {
     glideBottom.jump(1, console.log('Bottom!'));
   });
+  </script>
+
+  <script>
+    
+    $('#unassigned-volunteers').multiSelect({
+      
+      afterSelect: function(value){
+      
+      
+      var myShit = $('#unassigned-volunteers')
+      var user_id_value = value[0]
+      var data = { 'user_id':user_id_value}
+
+      console.log("This is awesome-er", value);
+      console.log("This is data", data);
+      console.log("This is my shit", myShit[0].value)
+    
+          // $.ajax({
+          //   type: 'POST',
+          //   url: "/event_users",
+          //   data: user_id_value,
+          //   dataType:'json',
+          //   error: function(err){
+          //     console.log(err);
+          //   },
+          //   success: function(myShit){ 
+          //     console.log("SCHWEET");
+          //   },
+          //   complete: function (myShit){
+          //     console.log("Killah", myShit)
+          //   }
+          //   });
+    },
+
+    });
+
+      $('#unassigned-volunteers').submit(function (event){
+        // var valuesToSubmit = $("#unassigned-volunteers").serialize();
+        
+        $.ajax({
+            url:'/event_users',
+            type:"POST",
+            dataType:'json',
+            data: value,
+            processData:false,
+
+            success: function (data){
+            alert(data);
+            },
+            
+            error: function (xhr, status){
+            alert(xhr.error);}
+        });      
+      });
+
 
   </script>
 </body>

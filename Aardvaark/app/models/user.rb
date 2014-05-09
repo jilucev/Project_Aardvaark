@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
   end
 
   def self.belong_to_org?(org)
-    users = RelationshipJunction.joins(:user).where("organization_id = ? AND role_code = ?", org.id, 1).select("user_id")
+    users = RelationshipJunction.joins(:user).where("organization_id = ? AND role_code != ?", org.id, 0).select("user_id")
     User.where(id: users)
   end
 
@@ -76,6 +76,16 @@ class User < ActiveRecord::Base
       return true
     end
   end
+
+  def self.committed?(event)
+    EventUser.where("event_id = ?", event.id).select("user_id")
+  end
+
+  def self.available?(committed)
+    User.where.not(id: committed)
+  end
+
+
 
 end
 

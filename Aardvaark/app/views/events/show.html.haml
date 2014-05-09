@@ -45,12 +45,12 @@
           %th Phone
           %th Gender
           %th Remove
-          -User.all.each do |user|
+          -@committed_users.each do |user|
             %tr
-              %td= user.firstname+" "+user.lastname
-              %td= user.email
-              %td= user.phone
-              %td= user.gender
+              %td= User.find(user.user_id).firstname+" "+User.find(user.user_id).lastname
+              %td= User.find(user.user_id).email
+              %td= User.find(user.user_id).phone
+              %td= User.find(user.user_id).gender
               %td= link_to "Remove from event", root_path
 
     .row
@@ -58,18 +58,52 @@
         %p.subheading
           Available Volunteers
         = form_for @event_users do |f|
-          -@users.each do |user|
-            -if user.id != @user.id
-              %button.btn.btn-primary{:type => "button", :data => {:toggle => "button"}}
-                = f.check_box :user_id
-                = user.firstname+" "+user.lastname
-          %span.input-group-btn
+          -if @available_users != 0
+            - @available_users.each do |user|
+              -if user.id != @user.id    
+                = f.check_box :user_id, {}, User.find(user.id).id, false
+                = User.find(user.id).firstname+" "+User.find(user.id).lastname
+                = f.hidden_field :event_id, :value => params[:id]
+                %br
             = f.submit "Put these jokers to work", class: "btn btn-default"
+            %br
+            %br
+            %br
+            %br
+            %br
+            %br
+            %br
+            %br
+            %br
+            %br
+            %br
+            %br
+            %br
+            %br
+            %br
+            %br
+            %br
+            %br
+            %br
+        %input.checkbox#1{:type => "checkbox"}
+          %label{:for => 1}
+            Test checkbox
 
-    %input.checkbox#1{:type => "checkbox"}
-      %label{:for => 1}
-        Test checkbox
-
+        = form_for @event_users do |f|
+          -if @event_users.id != @user.id
+            = f.collection_check_boxes( :user_id, @users, :id, :firstname )
+          = f.submit "Put these jokers to work"
+    .row
+      .col-xs-12
+        %p.subheading
+          Available Volunteers
+        = form_for @event_users, :html => {:id => "valuesToSubmit"} do |f|
+          %select#unassigned-volunteers{:multiple => "multiple"}
+            -@available_users.each do |user|
+              %option.volunteerAssign{:value => user.id, :data => user.id}
+                = User.find(user.id).firstname+" "+User.find(user.id).lastname
+            = f.submit "Put these jokers to work", class: "btn btn-default"          
+          
 
 
     %h1 THIS WILL THE THE MOST AMAZING PAGE IN THE WORLD
