@@ -19,7 +19,7 @@ class EventsController < ApplicationController
     @users = User.belong_to_org?(@organization)
 
     @committed_users = User.committed?(@event)
-    @available_users = User.available?(@committed_users)
+    @available_users = User.available?(@committed_users, @users)
 
     @upcoming_events = User.upcoming_events(@user)
   end

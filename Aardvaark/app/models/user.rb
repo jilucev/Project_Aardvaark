@@ -81,8 +81,8 @@ class User < ActiveRecord::Base
     EventUser.where("event_id = ?", event.id).select("user_id")
   end
 
-  def self.available?(committed)
-    User.where.not(id: committed)
+  def self.available?(committed, belong_to_org)
+    belong_to_org.where.not(id: committed)
   end
 
 
