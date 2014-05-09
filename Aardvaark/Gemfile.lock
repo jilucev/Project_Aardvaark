@@ -68,6 +68,8 @@ GEM
     minitest (5.3.3)
     multi_json (1.9.2)
     polyglot (0.3.4)
+    pony (1.8)
+      mail (>= 2.0)
     pry (0.9.12.6)
       coderay (~> 1.0)
       method_source (~> 0.8)
@@ -141,6 +143,7 @@ DEPENDENCIES
   haml
   jbuilder (~> 2.0)
   jquery-rails
+  pony
   pry
   rails (= 4.1.0.rc2)
   sass-rails (~> 4.0.2)

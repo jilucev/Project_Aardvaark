@@ -1,4 +1,3 @@
-require 'pry'
 class EventUsersController < ApplicationController
   respond_to :json
 
@@ -38,6 +37,7 @@ class EventUsersController < ApplicationController
     @event_users = EventUser.new(event_user_params)
 
     if @event_users.save
+      EventUser.email_builder(@event_users)
       redirect_to user_event_path(current_user.id, @event_users.event_id)
     else
       render :new

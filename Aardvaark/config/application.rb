@@ -7,6 +7,8 @@ require 'font_awesome/sass'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+
+
 module Aardvaark
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -22,4 +24,22 @@ module Aardvaark
     # config.i18n.default_locale = :de
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
   end
+
+   # config.action_mailer.default_url_options = { :host =>
+   # 'www.yourhostnamehere.com' }
+
+   # config.action_mailer.delivery_method = :aardvaark_delivery
+
+
+# Aardvaark::Application.configure do
+#   config.action_mailer.smtp_settings = {
+#     :address   => "smtp.mandrillapp.com",
+#     :port      => 587,
+#     :enable_starttls_auto => true,
+#     :user_name => "romanchukenator@gmail.com",
+#     :password  => "S2kxvXEMlDNK7oFZkul-mg", # SMTP password is any valid API key
+#     :authentication => 'login', # Mandrill supports 'plain' or 'login'
+#     :domain => 'aDvK.com', # your domain to identify your server when connecting
+#   }
+# end  
 end
