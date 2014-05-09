@@ -10,7 +10,7 @@ goVolunteers = function() {
   type: 'post',
   data: $('form#user-signup-form').serialize(),
   success: function(data) {
-    alert('you are amazing and I like your bangs.');
+    $('#myModal').modal.show();
   },
   error: function(data) {
     console.log(data);

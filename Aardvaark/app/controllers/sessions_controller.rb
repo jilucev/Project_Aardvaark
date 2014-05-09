@@ -4,11 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @session = Session.new
-      if 3 == 3
-        @session.save
-        return "string kitten"
-      end
+    puts "in the create method"
     # if User.find_by(email: params[:email])
     #   user_assign
     # elsif Organization.find_by(email: params[:email])
@@ -19,16 +15,21 @@ class SessionsController < ApplicationController
   end
 
   def user_assign
-    session[:user_id] = nil || session[:organization_id] = nil
     user = User.find_by(email: params[:email])
 
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
         redirect_to users_profile_path(user.id)
       else
+        session[:user_id] = nil 
+        session[:organization_id] = nil
+        respond_to do |format|
+          format.json {render json: user}
+        end
         # javascript_include_tag "jquery-modal"
         render :file => 'public/index.html.haml'
       end
+  end
       
       # if user && user.authenticate(params[:password]) && !user.organization
       #   session[:user_id] = user.id
