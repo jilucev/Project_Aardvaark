@@ -22,8 +22,6 @@ class EventsController < ApplicationController
     @available_users = User.available?(@event, @users)
 
     @upcoming_events = User.upcoming_events(@user)
-
-    @mailing = AardvaarkMailer.event_details.deliver
   end
 
   def create
