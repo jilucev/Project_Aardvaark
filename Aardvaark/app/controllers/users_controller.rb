@@ -24,7 +24,17 @@ class UsersController < ApplicationController
   def show
     restrict_access
     @organizations = Organization.all
-    @user = User.find_by(params[:id])
+    @event = Event.new
+    
+    @params = params[:id]
+    @user = User.find(@params)
+
+    @upcoming_events = User.upcoming_events(@user)
+    @open_events = User.open_events(@user)
+    @organizations_not_joined = User.organizations_not_joined(@user)
+    @organization_volunteer_pending = User.organization_volunteer_pending(@user)
+    @organizations_volunteering_at = User.organizations_volunteering_at(@user)
+    @organizer = User.organizer?(@user)
   end
 
   def edit

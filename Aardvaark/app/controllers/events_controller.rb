@@ -11,16 +11,24 @@ class EventsController < ApplicationController
   end
 
   def show
-    # @event = Event.find(params[:id])
+    @event_users = EventUser.new
+
+    @event = Event.find(params[:id])
+    @organization = Organization.find(@event.organization_id)
+    @user = User.find(params[:user_id])
+    @users = User.belong_to_org?(@organization)
+
+    @committed_users = User.committed?(@event)
+    @available_users = User.available?(@event, @users)
+
+    @upcoming_events = User.upcoming_events(@user)
   end
 
   def create
-    @organization = Organization.find(params[:organization_id])
-    @event = @organization.events.build(event_params)
-    @event.organization_id = current_user.id
+    @event = Event.new(event_params)
 
     if @event.save
-      redirect_to organization_path(params[:organization_id])
+      redirect_to user_path(current_user)
     else
       render :new
     end
@@ -54,7 +62,7 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(
-      :date, :description, :event_time, :location
+      :date, :description, :event_time, :location, :user_id, :organization_id, :type_of_event
       )
   end
 end

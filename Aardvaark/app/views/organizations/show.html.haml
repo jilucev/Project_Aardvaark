@@ -15,7 +15,7 @@
         - request = RelationshipJunction.find_by("user_id = #{invite.id} AND organization_id = #{@organization.id}")
         %h4= invite.firstname+" "+invite.lastname
         = link_to "Welcome aboard, sailor?", relationship_junction_path(request.id), method: :patch
-        = link_to "Nope.", relationship_junction_path(request.id), method: :delete
+        = link_to "Deny", relationship_junction_path(request.id), method: :delete
         %br
     .col-xs-4.col-md-4
 
@@ -26,7 +26,21 @@
       - @volunteers.each do |volunteer|
         - request = RelationshipJunction.find_by("user_id = #{volunteer.id} AND organization_id = #{@organization.id}")
         %h4= volunteer.firstname+" "+volunteer.lastname
-        = link_to "Nope.", relationship_junction_path(request.id), method: :delete
+        = link_to "Able to organize?", upgrade_path(request.id), method: :post
+        = link_to "Revoke privilages?", downgrade_path(request.id), method: :post
+        = link_to "Delete", relationship_junction_path(request.id), method: :delete
+        %br
+    .col-xs-4.col-md-4
+
+  .row
+    .col-xs-4.col-md-4
+    .col-xs-4.col-md-4.text-center
+      %h2= "Your Organizing Volunteers" 
+      - @volunteer_supers.each do |volunteer|
+        - request = RelationshipJunction.find_by("user_id = #{volunteer.id} AND organization_id = #{@organization.id}")
+        %h4= volunteer.firstname+" "+volunteer.lastname
+        = link_to "Revoke privilages?", downgrade_path(request.id), method: :post
+        = link_to "Delete", relationship_junction_path(request.id), method: :delete
         %br
     .col-xs-4.col-md-4
 
@@ -36,7 +50,6 @@
       %h2= @organization.name+"'s Events" 
       - @organization.events.each do |event|
         %h4= event.description
-        = event.location+" / "+event.date.to_s
         = link_to "Delete?", organization_event_path(current_user, event.id), method: :delete, confirm: "You sure?"
         = link_to "Modify?", edit_organization_event_path(current_user, event.id)
         %br
@@ -47,6 +60,10 @@
     .col-xs-4.col-md-4.text-center
       %h2 Create an event    
       = form_for ([@organization, @event]) do |f|
+        =f.label "point person"
+        %br
+        = f.collection_select :user_id, @volunteer_supers.all, :id, :firstname
+        %br
         = f.label "date"
         %br
         = f.date_field :date

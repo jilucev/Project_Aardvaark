@@ -1,0 +1,118 @@
+#container
+  .row
+    .col-xs-3
+      .row
+        .quad-nav.events
+      .row
+        .quad-nav.org
+    .col-xs-6.no-margin
+      .advk-logo.text-center
+    .col-xs-3
+      .row
+        .quad-nav.update-profile
+      .row
+        .quad-nav.logout
+
+
+  .content-container
+    .panel.panel-default
+      .panel-heading
+        .page-header
+          %h1= @organization.name
+          %h2
+            %small
+              = @event.type_of_event
+              = " on "
+              = @event.date.to_formatted_s(:long_ordinal)
+      .panel-body
+        %h3
+          %strong= "Organizer "
+          = User.find(@event.user_id).firstname+" "+User.find(@event.user_id).lastname
+        %h3
+          %strong= "Location "
+          = @event.location
+        %h3
+          %strong= "Time "
+          = @event.event_time.to_s(:time)
+        %h3
+          %strong= "Notes "
+          = @event.description
+        %h3
+          %strong= "Commitments"
+        %table.table
+          %th Name
+          %th Email
+          %th Phone
+          %th Gender
+          %th Remove
+          -@committed_users.each do |user|
+            %tr
+              %td= User.find(user.user_id).firstname+" "+User.find(user.user_id).lastname
+              %td= User.find(user.user_id).email
+              %td= User.find(user.user_id).phone
+              %td= User.find(user.user_id).gender
+              %td= link_to "Remove from event", event_user_path(user.id), method: :delete
+        %h3
+          Notify volunteers of event details?
+
+    .row
+      .col-xs-12
+        %p.subheading
+          Available Volunteers
+        = form_for @event_users do |f|
+          -if @available_users != 0
+            - @available_users.each do |user|
+              -if user.id != @user.id    
+                = f.check_box :user_id, {}, User.find(user.id).id, false
+                = User.find(user.id).firstname+" "+User.find(user.id).lastname
+                = f.hidden_field :event_id, :value => params[:id]
+                %br
+            = f.submit "Put these jokers to work", class: "btn btn-default"
+            %br
+            %br
+            %br
+            %br
+            %br
+            %br
+            %br
+            %br
+            %br
+            %br
+            %br
+            %br
+            %br
+            %br
+            %br
+            %br
+            %br
+            %br
+            %br
+        %input.checkbox#1{:type => "checkbox"}
+          %label{:for => 1}
+            Test checkbox
+
+        = form_for @event_users do |f|
+          -if @event_users.id != @user.id
+            = f.collection_check_boxes( :user_id, @users, :id, :firstname )
+          = f.submit "Put these jokers to work"
+    .row
+      .col-xs-12
+        %p.subheading
+          Available Volunteers
+        = form_for @event_users, :html => {:id => "valuesToSubmit"} do |f|
+          %select#unassigned-volunteers{:multiple => "multiple"}
+            -@available_users.each do |user|
+              %option.volunteerAssign{:value => user.id, :data => user.id}
+                = User.find(user.id).firstname+" "+User.find(user.id).lastname
+            = f.submit "Put these jokers to work", class: "btn btn-default"          
+          
+
+
+    %h1 THIS WILL THE THE MOST AMAZING PAGE IN THE WORLD
+
+    = image_tag "http://i1304.photobucket.com/albums/s540/LenP666/mix/catfish_zps46c073bf.jpg"
+        
+    #padding-bottom-hack    
+    .navbar.navbar-default.navbar-fixed-bottom{role: "navigation"}
+      .container-fluid
+        = render "users/user_name_check"
