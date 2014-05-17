@@ -14,23 +14,23 @@ class User < ActiveRecord::Base
   #   self.number = number.gsub(/[^0-9]/, "") if attribute_present?("number")
   # end
 
-  scope :with_vehicle, -> ( vehicle )  do
-    where(vehicle: true)
-  end
+  # scope :with_vehicle, -> ( vehicle )  do
+  #   where(vehicle: true)
+  # end
 
-  scope :are_male, -> ( male ) do
-    where(gender: male)
-  end
+  # scope :are_male, -> ( male ) do
+  #   where(gender: male)
+  # end
 
-  scope :are_female, -> (female) do
-    where(gender: female)
-  end
+  # scope :are_female, -> (female) do
+  #   where(gender: female)
+  # end
 
-  scope :relevant_events, -> (organization) do
+  # scope :relevant_events, -> (organization) do
     # self.joins(oranizations: organization)
     # OR
     # Event.where(organization: org)
-  end
+  # end
 
   def self.search_by_age(min, max)
     self.where("age BETWEEN ? AND ?", min, max)
